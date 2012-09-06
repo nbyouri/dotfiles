@@ -1,0 +1,14 @@
+#  HTML COLOR NAME   COL A N T STRING or REGULAR EXPRESSION
+#################### ### # # # ################################################################
+Red                  red b     ([a-zA-Z][a-zA-Z0-9_]*)[[:space:]]*\(
+Brown                yel b     (while|for|if|switch|main|return)[[:space:]]*\(
+Brown                yel b     (else)
+Cyan                 cya b     [[:space:]]*(include)
+Green                grn       (do)[[:space:]]*\{
+Cyan                 cya       (case|return|default)
+Green                grn       (break|continue)[[:space:]]*;
+Magenta              mag       (int|char|short|float|double|long|unsigned)[[:space:]]
+Blue                 blu b     [^[:alnum:]_]([[:digit:]]+)
+Brown                yel       "(.*)"
+Brown                yel       <(.*)>
+Magenta              mag     c :;

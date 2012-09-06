@@ -1,0 +1,19 @@
+#  HTML COLOR NAME   COL A N T STRING or REGULAR EXPRESSION
+#################### ### # # # ################################################################
+White                whi b     (^.*$)
+Magenta              mag     s import
+Magenta              mag     s from
+Green                grn b     (while|for|if|else|elif)
+Yellow               yel b     (print)
+Magenta              mag b   r ([0-9])
+White                whi b   c '"
+Yellow               yel     r (def.*)
+White                whi b   c ()
+Cyan                 cya     r (def)
+Green                grn     s return
+White                whi b   c :
+Blue                 blu b   r (#.*)
+Red                  red b   r '(.*)'
+Red                  red b   r "(.*)"
+Green                grn b   r for[[:space:]]+.*[[:space:]]*(in)
+Magenta              mag     c \
