@@ -1,3 +1,3 @@
 #Dotfiles
 
-Beastie's files
+Beastie's dotfiles

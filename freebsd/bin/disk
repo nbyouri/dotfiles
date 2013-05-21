@@ -1,0 +1,7 @@
+#!/bin/sh
+
+DISK=$(cdf -h| awk 'NR==2 {print $4}')
+DISK1=$(cdf -h| awk 'NR==2 {print $5}')
+
+echo "$DISK1/$DISK"
+

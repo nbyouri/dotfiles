@@ -1,0 +1,49 @@
+# CWM  config file by Beastie 
+# Muh Colemak!
+
+# Moving and Resizing:
+
+bind M-n moveleft
+bind M-e movedown
+bind M-i moveup
+bind M-o moveright
+bind MS-n bigmoveleft
+bind MS-e bigmovedown
+bind MS-i bigmoveup 
+bind MS-o bigmoveright
+
+
+bind CM-n resizeleft
+bind CM-e resizedown
+bind CM-i resizeup
+bind CM-o resizeright
+bind CMS-n bigresizeleft
+bind CMS-e bigresizedown
+bind CMS-i bigresizeup
+bind CMS-o bigresizeright
+
+mousebind M-3 window_resize
+
+# Other keybinds
+
+bind MS-c delete
+bind MS-r reload
+
+
+# Launching 
+
+bind MS-Return "urxvt"
+
+# Progams:
+
+command shell urxvtc
+
+# WM Appearence:
+
+borderwidth 3 
+moveamount 3
+color activeborder "#1c678c"
+color inactiveborder "#44484c"
+#color menubg "#212121"
+#color menufg "#c2c2c2"
+

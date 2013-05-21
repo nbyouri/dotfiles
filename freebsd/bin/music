@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "$(cmus-remote -Q)" == "" ]
+    then
+     echo -e "Not playing.";
+         continue
+     else
+ 
+     artist=$(cmus-remote -Q | sed -n 's/tag artist \(.*\)/\1/p');
+     title=$(cmus-remote -Q | sed -n 's/tag title \(.*\)/\1/p');
+     title=$(echo $title | sed 's/\"/\\\"/g'); # escape title
+     echo -e "$artist:$title"
+fi

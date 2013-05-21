@@ -1,0 +1,83 @@
+#fichier ~/.muttrc
+
+#enregistre les messages envoyés et brouillons dans Gmail
+#set record="+[Gmail]/Messages envoyés"
+#set postponed="+[Gmail]/Brouillons"
+
+#configuration du serveur
+set hostname=gmail.com
+my_hdr From: Youri Mouton <youri.mout@gmail.com>
+
+unignore Date Message-ID In-Reply-To
+
+set move=no
+set spoolfile=imaps://imap.gmail.com:993/INBOX
+set imap_user = "youri.mout@gmail.com"
+set imap_pass= "*******"
+set imap_authenticators="login"
+set imap_passive="no"
+set folder="imaps://imap.gmail.com:993"
+set imap_list_subscribed="yes"
+
+set smtp_url="smtps://youri.mout:*********@smtp.gmail.com:465"
+set ssl_starttls="yes"
+
+set locale="fr_FR"
+set date_format="%A %d %b %Y à %H:%M:%S (%Z)"
+set attribution="Le %d, %n à écrit:"
+set forward_format="[Fwd: %s]"
+set forward_quote
+
+mailboxes !
+
+set pager_index_lines="7"
+set pager_stop
+
+#force l'utilisation d'un programme exterieur pour les mails en HTML
+auto_view text/html
+
+set certificate_file=/Users/youri/.gmail_cert
+set move = no # STOPS THE STUPID MBOX QUESTIONS
+# set pager = w3m
+# threaded view
+set sort = "threads"
+bind pager i "previous-undeleted"
+bind pager e "next-undeleted"
+color hdrdefault yellow black
+color quoted brightred black
+color signature magenta black
+color indicator brightwhite black 
+color attachment black green
+color error red black
+color message white black
+color search brightwhite magenta
+color status blue black 
+color tree red black
+color normal white black
+color tilde green black
+color bold brightyellow black
+color markers red black
+color header yellow black “.*:”
+color header brightwhite black “^(From|Subject):”
+mono header bold “^(From|Subject):”
+color index brightblue black ~N
+color index red black ~F
+color index black green ~T
+color index brightwhite black ~D
+mono index bold ~N
+mono index bold ~F
+mono index bold ~T
+mono index bold ~D
+# Various smilies and the like
+color body brightgreen black “<[Ee]?[Bb]?[Gg]>”
+color body brightgreen black “<[Bb][Gg]>”
+# color body brightgreen black ”[;:]-*[)>(<|]”
+color body brightblue black “(http|ftp|news|telnet|finger)://[^\"\t\r\n]*”
+color body brightblue black “mailto:[-a-z_0-9.]+@[-a-z_0-9.]+”
+mono body bold “(http|ftp|news|telnet|finger)://[^\"\t\r\n]*”
+mono body bold “mailto:[-a-z_0-9.]+@[-a-z_0-9.]+”
+# email addresses
+color body brightblue black “[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+”
+mono body bold “[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+”
+# Mutt compile line
+# ./configure --with-curses --with-regex --enable-locales-fix --enable-pop --enable-imap --enable-smtp --with-ssl -with-sasl

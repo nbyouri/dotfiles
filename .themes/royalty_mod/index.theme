@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=royalty_mod
+Type=X-GNOME-Metatheme
+Comment=
+
+[X-GNOME-Metatheme]
+GtkTheme=royalty_mod
+MetacityTheme=international-mod
+IconTheme=Smokikon_v09
+CursorTheme=Ecliz_Full
+CursorSize=18
+NotificationTheme=standard

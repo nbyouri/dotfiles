@@ -1,0 +1,295 @@
+# Requires the gtk-xfce-engine.
+
+gtk-icon-sizes = "panel-menu=16,16:panel=16,16:gtk-button=16,16:gtk-large-toolbar=16,16"
+gtk-button-images = 1
+gtk-menu-images = 1
+
+style "default"
+{
+	GtkButton::default_border			= {0, 0, 0, 0}
+	GtkButton::default_outside_border		= {0, 0, 0, 0}
+	GtkButton::child_displacement_x			= 0
+	GtkButton::child_displacement_y			= 1
+	GtkButton::default_spacing			= 2
+	GtkButton::focus-padding			= 0
+
+	GtkCheckButton::indicator_size			= 8
+
+	GtkMenuBar::internal-padding			= 1
+	GtkMenuBar::shadow_type				= none
+
+	GtkHandleBox::shadow_type			= none
+
+	GtkMenuItem::selected_shadow_type		= none
+
+	GtkPaned::handle_full_size			= 1
+	GtkPaned::handle_size				= 2
+
+	GtkRadioButton::indicator_size			= 10
+
+	GtkRange::slider_width				= 12
+	GtkRange::stepper_size				= 12
+	GtkRange::stepper_spacing			= 0
+	GtkRange::trough_border				= 0
+
+	GtkScrollbar::has_forward_stepper		= 1
+	GtkScrollbar::has_backward_stepper		= 1
+	GtkScrollbar::has_secondary_backward_stepper	= 0
+	GtkScrollbar::min_slider_length			= 30
+
+	GtkToolbar::shadow_type				= none
+
+	GtkWidget::focus-line-width			= 1
+	GtkWidget::focus_padding			= 1 
+	GtkWidget::interior_focus			= 1 
+	GtkWidget::internal_padding			= 1 
+
+	GtkEntry::cursor_aspect_ratio			= 0.1
+	GtkEntry::cursor_color				= "#8F8F8F"
+	GtkEntry::secondary_cursor_color		= "#8F8F8F"
+
+	GtkTextView::cursor_color			= "#e0e0e0"
+	GtkTextView::secondary_cursor_color		= "#e0e0e0"
+
+	xthickness					= 1
+	ythickness					= 1
+
+	base[NORMAL]					= "#222222" # Background, most
+	base[PRELIGHT]					= "#222222" # Mouseover menu
+	base[ACTIVE]					= "#1e1e1e" # Menu active item in inactive window
+	base[SELECTED]					= "#1e1e1e" # Menu active item in active window
+	base[INSENSITIVE]				= "#1a1a1a" # Background, insensitive
+
+	text[NORMAL]					= "#8F8F8F" # Text in window
+	text[PRELIGHT]					= "#8F8F8F" # Text on Mouseover
+	text[ACTIVE]					= "#e0e0e0" # Active text in inactive window
+	text[SELECTED]					= "#e0e0e0" # Active text in active window
+	text[INSENSITIVE]				= "#505050" # Unknown
+
+	bg[NORMAL]					= "#222222" # Normal Background, inactive Metacity bar, buttons
+	bg[PRELIGHT]					= "#222222" # Mouseover buttons
+	bg[ACTIVE]					= "#1e1e1e" # Mouseclicking, Tabs, active window list
+	bg[SELECTED]					= "#222222" # Metacity Bar
+	bg[INSENSITIVE]					= "#222222" # Insensitive buttons
+
+	fg[ACTIVE]					= "#8F8F8F"
+	fg[INSENSITIVE]					= "#505050"
+	fg[NORMAL]					= "#8F8F8F"
+	fg[PRELIGHT]					= "#e0e0e0"
+	fg[SELECTED]					= "#8F8F8F"
+
+	engine "xfce"
+	{
+		smooth_edge = true
+
+		boxfill
+		{
+			fill_style = plain
+		}
+	}
+}
+
+widget_class "*" style "default"
+
+style "menustyle" = "default"
+{
+	xthickness = 2
+	ythickness = 0
+
+		engine "xfce"
+	{
+		smooth_edge = true
+		grip_style = none
+
+		boxfill
+		{
+			fill_style = gradient
+			orientation = vertical
+			shade_start = 1.02
+			shade_end = 1.00
+		}
+	}
+}
+
+widget_class "*BonoboDockItem"	style "menustyle"
+class "*BonoboDockItem"		style "menustyle"
+widget_class "*ToolBar"		style "menustyle"
+class "*ToolBar"		style "menustyle"
+widget_class "*MenuBar"		style "menustyle"
+class "*MenuBar"		style "menustyle"
+
+class "GtkWidget"          style "default"
+
+style "inactivetext"
+{
+
+engine "mist"
+ 	{
+	}
+}
+
+widget_class "*.<GtkLabel>" style "inactivetext"
+widget_class "*.<GtkCellLayout>" style "inactivetext"
+#widget_class "*.<Combo>" style "inactivetext"
+
+style "inactivetext2"
+{
+
+
+  fg[PRELIGHT] 		= "#B3B600"
+  text[PRELIGHT] 	= "#B3B600"
+
+engine "mist"
+ 	{
+	}
+}
+
+widget_class "*.<GtkMenuItem>.*" style "inactivetext2"
+
+
+
+style "button" = "default"
+{
+	xthickness = 2
+	ythickness = 2
+
+	engine "xfce"
+	{
+		smooth_edge = true
+		grip_style = none
+
+		boxfill
+		{
+			fill_style = gradient
+			orientation = vertical
+			shade_start = 1.05
+			shade_end = 1.00
+		}
+	}
+}
+
+widget_class "*Button*"		style "button"
+class "*Button*"		style "button"
+widget_class "*button*"		style "button"
+class "*button*"		style "button"
+widget_class "*OptionMenu*"	style "button"
+class "*OptionMenu*"		style "button"
+
+style "sbstyle" = "default"
+{
+	fg[PRELIGHT] = "#000000"
+	bg[NORMAL] = "#222222"
+	bg[PRELIGHT] = "#353535"
+	xthickness = 2
+	ythickness = 2
+
+	engine "xfce"
+	{
+		smooth_edge = true
+		grip_style = none
+		boxfill
+		{
+			fill_style = gradient
+			orientation = automatic
+			shade_start = 1.0
+			shade_end = 1.0
+		}
+	}
+}
+
+widget_class "*Scrollbar*"	style "sbstyle"
+class "*Scrollbar*"		style "sbstyle"
+widget_class "*GtkScale*"	style "sbstyle"
+class "*GtkScale*"		style "sbstyle"
+
+
+style "pbstyle" = "default"
+{
+	fg[PRELIGHT] = "#8f8f8f"
+	bg[NORMAL] = "#222222"
+	bg[PRELIGHT] = "#1e1e1e"
+	xthickness = 2
+	ythickness = 2
+
+	engine "xfce"
+	{
+		smooth_edge = true
+		grip_style = none
+		boxfill
+		{
+			fill_style = gradient
+			orientation = automatic
+			shade_start = 1.0
+			shade_end = 1.0
+		}
+	}
+}
+
+widget_class "*GtkProgress*"	style "pbstyle"
+class "*GtkProgress*"		style "pbstyle"
+
+
+style "fsstyle"
+{
+#	fg[NORMAL] = "#8f8f8f"
+	fg[ACTIVE] = "#e0e0e0"
+	fg[SELECTED] = "#e0e0e0" 
+}
+
+widget_class "*List"		style "fsstyle"
+class "*List"			style "fsstyle"
+widget_class "*Button"		style "fsstyle"
+class "*Button"			style "fsstyle"
+widget_class "*Tree"		style "fsstyle"
+class "*Tree"			style "fsstyle"
+
+style "ledstyle"
+{
+	text[NORMAL] = "#8f8f8f"
+}
+
+widget_class "*Clock*"		style "ledstyle"
+class "*Clock*"			style "ledstyle"
+
+style "menuitem" = "default"
+{
+	xthickness = 1
+	ythickness = 2
+}
+
+widget_class "*MenuItem*"	style "menuitem"
+class "*MenuItem*"		style "menuitem"
+
+style "flat" = "default"
+{
+	xthickness = 2
+	ythickness = 2
+
+	engine "xfce" 
+	{
+		smooth_edge = true
+		grip_style = none
+		
+		boxfill
+		{
+			fill_style = gradient
+			orientation = vertical
+			shade_start = 1.00
+			shade_end = 1.00
+		}
+	}
+}
+
+widget_class "*HandleBox*"	style "flat"
+
+style "titlebar"
+{
+	bg[SELECTED]	= "#222222"
+	        
+	fg[SELECTED]	= "#E0E0E0"
+	fg[INSENSITIVE]	= "#8F8F8F"
+}
+
+widget "xfwm"			style "titlebar"
+widget_class "MetaFrames"	style "titlebar"
+class "MetaFrames"		style "titlebar"
