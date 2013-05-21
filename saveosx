@@ -185,3 +185,40 @@ zsh scipt
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 /opt/local/bin/startx
+
+
+Make Finder quitable:
+defaults write com.apple.finder QuitMenuItem -bool YES
+
+Disable time machine:
+sudo tmutil disable
+
+If startx says 'couldn't save cookie, run 'xinit' or set use_xauth=1 in startx.
+disable secure virtual memory
+Terminal
+udo defaults write /Library/Preferences/com.apple.virtualMemory DisableEncryptedSwap -boolean yes
+
+Daemons you can safely disable:
+com.apple.AirPortBaseStationAgent.plist
+com.apple.CalendarAgent.plist
+com.apple.Dock.plist
+com.apple.Finder.plist
+com.apple.ReportCrash.Root.plist
+com.apple.accountsd.plist
+com.apple.assistantd.plist
+com.apple.backupd.plist
+com.apple.blued.plist
+com.apple.cookied.plist
+com.apple.coreservices.appleid.authentication.plist
+com.apple.gamed.plist
+com.apple.helpd.plist
+com.apple.imagent.plist
+com.apple.quicklook.plist
+com.apple.revisiond.plist
+com.apple.sleepservicesd.plist
+com.apple.sociald.plist
+com.apple.stackshot.plist
+com.apple.sysmond.plist
+com.apple.talagent.plist
+com.apple.tccd.plist
+
