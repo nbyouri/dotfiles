@@ -222,3 +222,4 @@ com.apple.sysmond.plist
 com.apple.talagent.plist
 com.apple.tccd.plist
 
+Disable spell check in preferences -> lang -> text
