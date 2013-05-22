@@ -14,19 +14,20 @@ static const uint8_t offsets[] = {0,0,0,0};
  *2)fixedcol         3)unkilcol
  *4)fixedunkilcol    5)outerbordercol
  *6)emptycol         */
-static const char *colors[] = {"#666666","#333333","#7a8c5c","#ff6666","#cc9933","#0d131a","#000000"};
+static const char *colors[] = {"#ffaf5f","#333333","#7a8c5c","#ff6666","#cc9933","#0d131a","#000000"};
 ///---Borders---///
 /*0) Outer border size. If you put this negative it will be a square. 
  *1) Full borderwidth
  *2) Magnet border size     */
-static const uint8_t borders[] = {2,5,9};
+static const uint8_t borders[] = {2,3,9};
 
 #define CURSOR_MOVING 52
 #define CURSOR_RESIZING 120
 
 ///--Menus and Programs---///
-static const char *menucmd[] = { "8menu", NULL };
+static const char *menucmd[] = { "thunar", NULL };
 static const char *terminal[] = { "urxvtc", NULL };
+static const char *dmenucmd[] = { "dnemu", NULL };
 
 ///---Shortcuts---///
 #define DESKTOPCHANGE(K,N) \
@@ -128,6 +129,7 @@ static key keys[] = {
     // Start programs
     {  MOD ,              XK_Return,     start,             {.com = terminal}},
     {  MOD ,              XK_y,          start,             {.com = menucmd}},
+    {  MOD ,              XK_p,          start,             {.com = dmenucmd}},
 		
     // Exit or restart twobwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,         {.i=0}},
