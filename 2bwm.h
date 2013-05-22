@@ -28,6 +28,7 @@ static const uint8_t borders[] = {2,3,9};
 static const char *menucmd[] = { "thunar", NULL };
 static const char *terminal[] = { "urxvtc", NULL };
 static const char *dmenucmd[] = { "dnemu", NULL };
+static const char *mmenucmd[] = { "8menu", NULL };
 
 ///---Shortcuts---///
 #define DESKTOPCHANGE(K,N) \
@@ -130,6 +131,7 @@ static key keys[] = {
     {  MOD ,              XK_Return,     start,             {.com = terminal}},
     {  MOD ,              XK_y,          start,             {.com = menucmd}},
     {  MOD ,              XK_p,          start,             {.com = dmenucmd}},
+    {  MOD ,              XK_g,          start,             {.com = mmenucmd}},
 		
     // Exit or restart twobwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,         {.i=0}},
