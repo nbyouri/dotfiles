@@ -1,3 +1,14 @@
-#gtk-theme-name = "termGTK"
-gtk-theme-name = "royalty_mod"
-gtk-font-name = "GohuFontMod11 11"
+# -- THEME AUTO-WRITTEN DO NOT EDIT
+include "/Users/youri/.themes/royalty_mod/gtk-2.0/gtkrc"
+
+style "user-font" {
+	font_name = "terminus12 9"
+}
+
+widget_class "*" style "user-font"
+
+gtk-font-name="terminus12 9"
+
+include "/Users/youri/.gtkrc.mine"
+
+# -- THEME AUTO-WRITTEN DO NOT EDIT
