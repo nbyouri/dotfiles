@@ -4,7 +4,6 @@ URxvt.borderColor:  #080808
 *scrollBar: false
 *internalBorder: 0
 URxvt*termName: rxvt-256color
-URxvt.colorUL: #666666
 urxvt.xftAntialias: false
 urxvt*cursorUnderline:  true
 
@@ -169,3 +168,8 @@ xfontsel*font: -*-gohufontmod-*-*-*-*-*-*-*-*-*-*-*-*
 *color15: #d7d7d7
 *font: -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
 *boldFont: -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
+
+URxvt.colorUL: #ffaf5f
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:      /usr/bin/firefox
+URxvt.matcher.button:   1
