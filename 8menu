@@ -3,7 +3,6 @@
       -bg "#080808" \
       -fg "#808080"\
       -font "-beastie-gohufontmod11-medium-r-normal--11-80-100-100-c-60-iso8859-1"\
-      -popup\
       -teleport\
       "Urxvtc":"urxvtc --geometry 70x20"\
       "Music":"urxvt -e cmus"\
