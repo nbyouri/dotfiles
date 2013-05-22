@@ -1,5 +1,0 @@
-#! /bin/sh
-
-MEM=$( top -b 0 res | awk 'NR==4 {print $2}')
-
-echo "$MEM"
