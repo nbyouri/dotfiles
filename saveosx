@@ -226,7 +226,18 @@ Disable spell check in preferences -> lang -> text
 
 How to get the dock and menubar out of the way:
 
-add <key>LSUIPresentationMode</key>
+add 
+
+<key>LSUIElement</key>
+<string>1</string>
+<key>LSUIPresentationMode</key>
     <integer>4</integer>
 
 at the end of /Applications/any.app/Contents/Info.plist
+
+
+You can compile firefox-x11-devel from macports.
+Don't forget to edit the dbus launchd script to make it load at start 
+or you won't be able to use firefox properly.
+
+Don't forget to unassign default osx key combos if you use cmd key in your wm.
