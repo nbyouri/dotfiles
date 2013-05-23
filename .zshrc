@@ -239,3 +239,6 @@ zle -C orig-expand-or-complete .expand-or-complete _main_complete
 # use the orig-expand-or-complete inside the colorize function (for some reason, using the ".expand-or-complete" widget doesn't work the same)
 expand-or-complete() { builtin zle orig-expand-or-complete && colorize-zle-buffer }
 zle -N expand-or-complete
+alias top='top -s1 -o cpu -R -F'
+# mutt background fix
+COLORFGBG="default;default"
