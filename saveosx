@@ -198,7 +198,7 @@ disable secure virtual memory
 Terminal
 udo defaults write /Library/Preferences/com.apple.virtualMemory DisableEncryptedSwap -boolean yes
 
-Daemons you can safely disable, make sure to have X starting at login or you wont be able to do anything. Disabling the Dock daemon also disables the desktop background and other workspace utilities that should be managed in X. For the desktop background , check my ap.
+Daemons you can safely disable, make sure to have X starting at login or you wont be able to do anything. Disabling the Dock daemon also disables the desktop background and other workspace utilities that should be managed in X. For the desktop background , check setbg from my dotfiles github. 
 com.apple.AirPortBaseStationAgent.plist
 com.apple.CalendarAgent.plist
 com.apple.Dock.plist
