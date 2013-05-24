@@ -13,13 +13,13 @@ unignore Date Message-ID In-Reply-To
 set move=no
 set spoolfile=imaps://imap.gmail.com:993/INBOX
 set imap_user = "youri.mout@gmail.com"
-set imap_pass= "derp"
+set imap_pass= ""
 set imap_authenticators="login"
 set imap_passive="no"
 set folder="imaps://imap.gmail.com:993"
 set imap_list_subscribed="yes"
 
-set smtp_url="smtps://youri.mout:derp@smtp.gmail.com:465"
+set smtp_url="smtps://youri.mout:@smtp.gmail.com:465"
 set ssl_starttls="yes"
 
 set locale="fr_FR"
@@ -105,3 +105,11 @@ color index yellow default '~O'
 color index yellow default '~N'
 color index brightred default '~F' # Flagged Messages are important!
 color index blue default '~D' # Deleted Mails - use dark color as these are already "dealt with"
+
+
+# Key remapping for colemak, hjkl to neio.
+# move cursor over deleted messages
+bind index 'e'       next-entry
+bind index 'i'         previous-entry
+bind pager 'e'       next-entry
+bind pager 'i'         previous-entry

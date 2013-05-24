@@ -240,4 +240,7 @@ You can compile firefox-x11-devel from macports.
 Don't forget to edit the dbus launchd script to make it load at start 
 or you won't be able to use firefox properly.
 
-Don't forget to unassign default osx key combos if you use cmd key in your wm.
+Don't forget to unassign dsfault osx key combos if you use cmd key in your wm.
+
+
+you can also remove the Image Capture Support.app from /System/Library/Image\ Capture/Support
