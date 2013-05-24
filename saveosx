@@ -193,12 +193,12 @@ defaults write com.apple.finder QuitMenuItem -bool YES
 Disable time machine:
 sudo tmutil disable
 
-If startx says 'couldn't save cookie, run 'xinit' or set use_xauth=1 in startx.
+If startx says 'couldn't save cookie, run 'xinit' or set use_xauth=0 in startx.
 disable secure virtual memory
 Terminal
 udo defaults write /Library/Preferences/com.apple.virtualMemory DisableEncryptedSwap -boolean yes
 
-Daemons you can safely disable:
+Daemons you can safely disable, make sure to have X starting at login or you wont be able to do anything. Disabling the Dock daemon also disables the desktop background and other workspace utilities that should be managed in X. For the desktop background , check my ap.
 com.apple.AirPortBaseStationAgent.plist
 com.apple.CalendarAgent.plist
 com.apple.Dock.plist
