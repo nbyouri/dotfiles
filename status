@@ -1,0 +1,49 @@
+#!/bin/bash
+
+Current_Workspace_UH() {
+		CW=$(xprop -root _NET_CURRENT_DESKTOP| 
+		sed -e 's/_NET_CURRENT_DESKTOP(CARDINAL) = //')
+  	UH=$(awk -f ~/Scripts/uh.awk)
+		MAILS=$(awk -f ~/Scripts/mail.awk)
+		DATE=$(date "+%d/%H:%M")
+		VOL=$(awk -f ~/Scripts/volume.awk)
+		echo -n "\l\f1\u5\b0 \u2\b2\f3 $CW \b0\f4\b0\u5\f1  \u2\f5\b2 $MAILS \f4\f1\u5\b0  \u2\b2\f6 $UH  \u5\b0\f1  \u2\b2\f5 $DATE \b0\f1\u5 \b2\u2\f3\ $VOL " 
+}
+
+Batt_Disk_Mem_Usage() {
+		DISKUSED=$(df -h|awk '/disk0s2/ {print $8}')
+		MEMUSED=$(awk -f ~/Scripts/mem.awk)
+		BATTUSED=$(pmset -g batt|awk '/%/ {sub(/;/,"",$2);print$2}')
+		CPUTEMP=$(/Applications/TemperatureMonitor.app/Contents/MacOS/tempmonitor -c|
+		awk '{print $1t"°"}')
+		CPUAVG=$(top -l 1|head| awk '/user/ {print $3}')
+		echo -n "\r\b0\u5\f1  \b2\u2\f3 $CPUAVG \u5\b0\f1  \b2\u2\f5 $CPUTEMP \u5\b0\f1 \u2\b2\f6 $BATTUSED \u5\b0\f1  \u2\f5\b2 $DISKUSED \u5\b0\f1  \u2\b2\f3 $MEMUSED " 
+}
+
+Lastfm_Status() {
+		CUR=$(awk -f ~/Scripts/lastfm.awk)
+		echo -n "\c\b0\u5\f1  \b2  $CUR \b0  \u2\b2"
+}
+
+while true; do
+		echo "$(Batt_Disk_Mem_Usage)$(Lastfm_Status)$(Current_Workspace_UH)"
+		sleep 10;
+done
+# World
+# Cpu
+# Temp
+#
+# Mem
+# Disk 
+# volume 
+#
+# clock
+#
+# Bat
+#
+# Mail
+#
+# Invader
+#
+#
+# Music
