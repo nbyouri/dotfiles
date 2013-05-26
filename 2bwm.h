@@ -29,6 +29,7 @@ static const char *menucmd[] = { "thunar", NULL };
 static const char *terminal[] = { "urxvtc", NULL };
 static const char *dmenucmd[] = { "dnemu", NULL };
 static const char *mmenucmd[] = { "8menu", NULL };
+static const char *twobwm_path = "/opt/local/bin/2bwm";
 
 ///---Shortcuts---///
 #define DESKTOPCHANGE(K,N) \
@@ -126,7 +127,7 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_Down,       cursor_move,       {.i=1}},
     {  MOD |SHIFT,        XK_Right,      cursor_move,       {.i=2}},
     {  MOD |SHIFT,        XK_Left,       cursor_move,       {.i=3}},
-
+    { MOD,                XK_j,          always_on_top,     {.i=0}},
     // Start programs
     {  MOD ,              XK_Return,     start,             {.com = terminal}},
     {  MOD ,              XK_y,          start,             {.com = menucmd}},
