@@ -25,7 +25,7 @@ print_uptime(time_t *nowp)
     	char buf[256];
 
    	if (strftime(buf, sizeof(buf),
-   	NULL, localtime(nowp)) != 0)
+   	    NULL, localtime(nowp)) != 0)
 	mib[0] = CTL_KERN;
 	mib[1] = KERN_BOOTTIME;
 	size = sizeof(boottime);
