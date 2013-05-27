@@ -12,6 +12,7 @@ static const char copyright[] =
 	The Regents of the University of California.  All rights reserved.\n";
 
 ``
+__FBSDID("$FreeBSD: src/usr.bin/w/w.c,v 1.58 2005/06/04 23:40:09 gad Exp $");
 
  Copyright (c) 1980, 1991, 1993, 1994
 	The Regents of the University of California.  All rights reserved.
