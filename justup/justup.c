@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include <sys/sysctl.h>
 
-struct timeval	boottime;
-time_t		now;
-
 static void 	print_uptime(time_t *);
 
 int
 main(int argc, char *argv[])
 {
+	time_t now;
 	(void)time(&now);
 	print_uptime(&now);
 	printf("\n");
@@ -18,6 +16,7 @@ main(int argc, char *argv[])
 static void
 print_uptime(time_t *nowp)
 {
+	struct timeval boottime;
 	time_t uptime;
 	int days, hrs, mins, secs;
 	int mib[2];
