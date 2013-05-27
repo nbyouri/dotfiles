@@ -107,7 +107,7 @@ abstracts = {
 
 
   ########## Actions (/ME stuff) #########################
-# used internally by this theme
+  # used internally by this theme
   action_core = " %n$* │";
 
   # generic one that's used by most actions
@@ -127,21 +127,21 @@ abstracts = {
   pubaction = "{action $*}";
 
   # generic one that's used by most actions
-#  action = " %m$* │ %N%m";
+  #  action = " %m$* │ %N%m";
 
   # own action, both private/public
   # ownaction = "{action $*}";
- # ownaction = " %m$* │ %N%m";
+  # ownaction = " %m$* │ %N%m";
 
   # own action with target, both private/public
-#  ownaction_target = "  {action $*}";
+  #  ownaction_target = "  {action $*}";
 
   # private action sent by others
-#  pvtaction = "{ $*}";
-#  pvtaction_query = "{ $*}";
+  #  pvtaction = "{ $*}";
+  #  pvtaction_query = "{ $*}";
 
   # public action sent by others
- # pubaction = "  {action}";
+  # pubaction = "  {action}";
 
 
   ########## other IRC events #############################
@@ -262,10 +262,10 @@ formats = {
     quit = "        quit %r│ %n {channick $0}";
     quit_once = "{channel $3} {channick $0} {chanhost $1} %kquit {reason %C$2}";
 
-    nick_changed = "%K{channick$[-13]0}%G│ %n {channick $1}";
+    nick_changed = "%K{channick $[-13]0}%G│ %n {channick $1}";
     your_nick_changed = "%K         you %G│ %n {channick $1}";
 
-    pubmsg = "{pubmsgnick $2 {pubnick \00313$[-11]0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick \00304$[-11]0}}$1";
 
     own_msg = "{ownmsgnick $2 {ownnick $[-11]0}}$1";
     own_msg_channel = "{ownmsgnick $3 {ownnick $[-11]0}{msgchannel $1}}$2";
