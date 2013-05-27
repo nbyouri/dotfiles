@@ -6,7 +6,6 @@ struct timeval	boottime;
 time_t		now;
 
 static void 	print_uptime(time_t *);
-static int	this_is_uptime(const char *s);
 
 int
 main(int argc, char *argv[])
