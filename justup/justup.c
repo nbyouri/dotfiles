@@ -30,7 +30,7 @@ print_uptime(time_t *nowp)
 	size = sizeof(boottime);
 	if (sysctl(mib, 2, &boottime, &size, NULL, 0) != -1 &&
 	    boottime.tv_sec != 0) {
-		uptime = now - boottime.tv_sec;
+		uptime = *nowp - boottime.tv_sec;
 		if (uptime > 60)
 		uptime += 30;
 		days = uptime / 86400;
