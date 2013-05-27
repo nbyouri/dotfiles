@@ -11,7 +11,7 @@ int
 main(int argc, char *argv[])
 {
 	(void)time(&now);
-	pr_header(&now);
+	print_uptime(&now);
 	printf("\n");
 }
 
