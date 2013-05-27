@@ -1,13 +1,12 @@
 #include <sys/time.h>
 #include <stdio.h>
-//#include <stdlib.h>
 #include <sys/sysctl.h>
 
 struct timeval	boottime;
 time_t		now;
 
-static void		 pr_header(time_t *);
-static int		 this_is_uptime(const char *s);
+static void 	print_uptime(time_t *);
+static int	this_is_uptime(const char *s);
 
 int
 main(int argc, char *argv[])
@@ -15,20 +14,19 @@ main(int argc, char *argv[])
     (void)time(&now);
     pr_header(&now);
     printf("\n");
-	//exit(0);
 }
 
 static void
-pr_header(time_t *nowp)
+print_uptime(time_t *nowp)
 {
 	time_t uptime;
 	int days, hrs, mins, secs;
 	int mib[2];
 	size_t size;
-    char buf[256];
+    	char buf[256];
 
-    if (strftime(buf, sizeof(buf),
-                 NULL, localtime(nowp)) != 0)
+   	if (strftime(buf, sizeof(buf),
+   	NULL, localtime(nowp)) != 0)
 	mib[0] = CTL_KERN;
 	mib[1] = KERN_BOOTTIME;
 	size = sizeof(boottime);
@@ -36,7 +34,7 @@ pr_header(time_t *nowp)
 	    boottime.tv_sec != 0) {
 		uptime = now - boottime.tv_sec;
 		if (uptime > 60)
-			uptime += 30;
+		uptime += 30;
 		days = uptime / 86400;
 		uptime %= 86400;
 		hrs = uptime / 3600;
