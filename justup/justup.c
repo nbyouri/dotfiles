@@ -11,9 +11,9 @@ static int	this_is_uptime(const char *s);
 int
 main(int argc, char *argv[])
 {
-    (void)time(&now);
-    pr_header(&now);
-    printf("\n");
+	(void)time(&now);
+	pr_header(&now);
+	printf("\n");
 }
 
 static void
