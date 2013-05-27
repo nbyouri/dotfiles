@@ -7,7 +7,11 @@ and put the justup file in your path, often /usr/bin
 
 #License:
 
-`
+static const char copyright[] =
+"@(#) Copyright (c) 1980, 1991, 1993, 1994\n\
+	The Regents of the University of California.  All rights reserved.\n";
+
+``
 
  Copyright (c) 1980, 1991, 1993, 1994
 	The Regents of the University of California.  All rights reserved.
@@ -37,4 +41,4 @@ and put the justup file in your path, often /usr/bin
   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
   SUCH DAMAGE.
  
- `
+ ``
