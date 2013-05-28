@@ -1,5 +1,6 @@
 #!/bin/zsh
 # Color and echo
+# you might need a few scripts/apps found on my github
            
             e="echo"    
             c0="\033[0m"    # Reset
@@ -18,7 +19,7 @@ echo -n "\033]0;Info Script\007"
 OS=$(sw_vers|awk '/ProductName/{print $2, $3, $4}')
 VERS=$(sw_vers|awk '/ProductVersion/{print $2}')
 BUILD=$(sw_vers|awk '/BuildVersion/{print $2}')
-WM=$(echo 2bwm)
+#WM=$(echo 2bwm)
 #CPU=$(sysctl -n machdep.cpu.brand_string|awk '{print $1,$2,$3,$4}') 
 RAM=$(sysctl -n hw.memsize|awk '{printf("%d", $1/1e+06)}')
 #VCARD=$(system_profiler SPDisplaysDataType|awk '/Chipset/{print $3,$4,$5}') 
@@ -27,7 +28,7 @@ MODEL=$(sysctl -n hw.model)
 DISK_USAGE=$(df | awk '/disk0s2/{print$5}')
 PORTS=$(port installed|awk 'END {print NR-1}')
 SHELL=$(echo $SHELL)
-UPTIME=$(uptime|cut -c 11-22)
+UPTIME=$(justup)
 # Printing the apple
 
 $e "${c3}OS:     ${c0}$OS $VERS ($BUILD)"
@@ -36,7 +37,7 @@ $e "${c3}Uptime: ${c0}$UPTIME"
 $e "${c3}Ports:  ${c0}$PORTS"
 $e "${c3}Shell:  ${c0}$SHELL"
 $e "${c3}Theme:  ${c0}Beastie"
-$e "${c3}WM:     ${c0}$WM"
+#$e "${c3}WM:     ${c0}$WM"
 $e "${c3}Ram:    ${c0}$RAM MB"
 #$e "${c3}Cpu:   ${c0}$CPU"
 #$e "${c3}VRam:  ${c0}$VCARD @ $VRAM"

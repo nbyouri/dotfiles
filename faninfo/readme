@@ -1,1 +1,5 @@
 I did no write this, I found this on edvakf's gist.
+
+To compile, use:
+
+`clang -o smc smc.c -framework IOKit`
