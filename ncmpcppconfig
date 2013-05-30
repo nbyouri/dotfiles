@@ -16,7 +16,8 @@ centered_cursor = "no"
 cyclic_scrolling = "yes"
 mouse_list_scroll_whole_page = "no"
 #song_list_format = "{$8$9}{[%l] >> }{%t }$R{%a - %b}"
-song_list_format = " $0$8$8%l$0$8 $1|$7 $4%a$7 $1|$7 $2%t$1 $R $8%b$1"
+song_list_format = " $0$8$8%l$0$8 $1│$7 $4%a$7 $1│$7 $2%t$1 $R $8%b$1"
+
 
 song_library_format = "{%n > }{%t}|{%f}"
 
