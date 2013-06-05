@@ -245,3 +245,12 @@ Don't forget to unassign dsfault osx key combos if you use cmd key in your wm.
 
 
 you can also remove the Image Capture Support.app from /System/Library/Image\ Capture/Support
+
+
+#disable spell check system wide
+sudo mv /System/Library/Services/AppleSpell.service/Contents/Resources /System/Library/Services/AppleSpell.service/Contents/Resources.disabled
+
+
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool NO
+
+
