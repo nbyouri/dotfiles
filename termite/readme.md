@@ -15,6 +15,13 @@
 
 ###Fetching termite:
 ``git clone https://github.com/thestinger/termite``     
+``cd termite``    
+``rm -r util``    
+``git clone https://github.com/thestinger/util``    
+
+###Add this to termite.cc, at the beginning:
+``#include <errno.h>``      
+``#include <math.h>``    
 
 Now make sure to use the makefile from this repository.
 
