@@ -1,6 +1,6 @@
-#Termite on Mac OS X:
+#Termite on Mac OS X: (tested on 10.8.3)
 
-##First, you have to install vte:
+##First, you have to install the patched vte:
 
 ###Dependencies:
 - gtk3
