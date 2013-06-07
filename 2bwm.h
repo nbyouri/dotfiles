@@ -1,5 +1,5 @@
 ///---Modifiers---///
-#define MOD             XCB_MOD_MASK_2       /* Super/Windows key */
+#define MOD             XCB_MOD_MASK_2    /* Super/Windows key */
 ///--Speed---///
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise. 
  *0)move step slow   1)move step fast
@@ -20,15 +20,21 @@ static const char *colors[] = {"#ffaf5f","#333333","#7a8c5c","#ff6666","#cc9933"
  *1) Full borderwidth
  *2) Magnet border size     */
 static const uint8_t borders[] = {2,3,9};
-
+#define NB_NAMES 1 
+#define LOOK_INTO  "WM_NAME"
+static const char *ignore_names[] = {"xload" };
+#define NB_F_NAMES 1
+static const char *ignore_f_names[] = {"xload"};
 #define CURSOR_MOVING 52
 #define CURSOR_RESIZING 120
 
 ///--Menus and Programs---///
-static const char *menucmd[] = { "thunar", NULL };
-static const char *terminal[] = { "urxvtc", NULL };
+static const char *menucmd[] = { "open", "-a", "Finder", "~" };
+static const char *terminal[] = { "termite", NULL };
 static const char *dmenucmd[] = { "dnemu", NULL };
 static const char *mmenucmd[] = { "8menu", NULL };
+static const char *pausecmd[] = { "playpause", NULL };
+static const char *nextcmd[] = { "ncmpcpp", "next", NULL };
 static const char *twobwm_path = "/opt/local/bin/2bwm";
 
 ///---Shortcuts---///
@@ -111,7 +117,7 @@ static key keys[] = {
     {  MOD ,              XK_c,          prevworkspace,     {.i=0}},
 
     // Iconify the window
-//    {  MOD ,              XK_l,          hide,              {.i=0}},
+   //{  MOD ,              XK_l,          hide,              {.i=0}},
     // Make the window unkillable
     {  MOD ,              XK_u,          unkillable,        {.i=0}},
     // Make the window stay on all workpace
@@ -133,6 +139,8 @@ static key keys[] = {
     {  MOD ,              XK_y,          start,             {.com = menucmd}},
     {  MOD ,              XK_p,          start,             {.com = dmenucmd}},
     {  MOD ,              XK_g,          start,             {.com = mmenucmd}},
+    {  MOD|SHIFT ,        XK_Return,     start,             {.com = pausecmd}},
+    {  MOD|SHIFT ,        XK_b,          start,             {.com = nextcmd}},
 		
     // Exit or restart twobwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,         {.i=0}},
