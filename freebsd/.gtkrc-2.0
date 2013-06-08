@@ -1,0 +1,14 @@
+# -- THEME AUTO-WRITTEN DO NOT EDIT
+include "/home/youri/.themes/royalty_mod/gtk-2.0/gtkrc"
+
+style "user-font" {
+	font_name = "terminus12 9"
+}
+
+widget_class "*" style "user-font"
+
+gtk-font-name="terminus12 9"
+
+include "/home/youri/.gtkrc.mine"
+
+# -- THEME AUTO-WRITTEN DO NOT EDIT

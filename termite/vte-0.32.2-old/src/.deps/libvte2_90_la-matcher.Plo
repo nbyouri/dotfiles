@@ -1,0 +1,373 @@
+libvte2_90_la-matcher.lo libvte2_90_la-matcher.o: matcher.c ../config.h \
+  /usr/include/sys/types.h /usr/include/sys/cdefs.h \
+  /usr/include/machine/endian.h /usr/include/sys/_types.h \
+  /usr/include/machine/_types.h /usr/include/sys/_pthreadtypes.h \
+  /usr/include/sys/_stdint.h /usr/include/sys/select.h \
+  /usr/include/sys/_sigset.h /usr/include/sys/_timeval.h \
+  /usr/include/sys/timespec.h /usr/include/sys/_timespec.h \
+  /usr/include/string.h /usr/include/sys/_null.h /usr/include/strings.h \
+  /usr/include/xlocale/_string.h \
+  /usr/local/include/glib-2.0/glib-object.h \
+  /usr/local/include/glib-2.0/gobject/gbinding.h \
+  /usr/local/include/glib-2.0/glib.h \
+  /usr/local/include/glib-2.0/glib/galloca.h \
+  /usr/local/include/glib-2.0/glib/gtypes.h \
+  /usr/local/include/glib-2.0/glibconfig.h \
+  /usr/local/include/glib-2.0/glib/gmacros.h /usr/include/stddef.h \
+  /usr/include/limits.h /usr/include/sys/limits.h \
+  /usr/include/machine/_limits.h /usr/include/sys/syslimits.h \
+  /usr/include/float.h /usr/local/include/glib-2.0/glib/gversionmacros.h \
+  /usr/include/time.h /usr/include/xlocale/_time.h \
+  /usr/local/include/glib-2.0/glib/garray.h \
+  /usr/local/include/glib-2.0/glib/gasyncqueue.h \
+  /usr/local/include/glib-2.0/glib/gthread.h \
+  /usr/local/include/glib-2.0/glib/gatomic.h \
+  /usr/local/include/glib-2.0/glib/gerror.h /usr/include/stdarg.h \
+  /usr/local/include/glib-2.0/glib/gquark.h \
+  /usr/local/include/glib-2.0/glib/gbacktrace.h /usr/include/signal.h \
+  /usr/include/sys/signal.h /usr/include/machine/signal.h \
+  /usr/include/machine/trap.h /usr/local/include/glib-2.0/glib/gbase64.h \
+  /usr/local/include/glib-2.0/glib/gbitlock.h \
+  /usr/local/include/glib-2.0/glib/gbookmarkfile.h \
+  /usr/local/include/glib-2.0/glib/gbytes.h \
+  /usr/local/include/glib-2.0/glib/gcharset.h \
+  /usr/local/include/glib-2.0/glib/gchecksum.h \
+  /usr/local/include/glib-2.0/glib/gconvert.h \
+  /usr/local/include/glib-2.0/glib/gdataset.h \
+  /usr/local/include/glib-2.0/glib/gdate.h \
+  /usr/local/include/glib-2.0/glib/gdatetime.h \
+  /usr/local/include/glib-2.0/glib/gtimezone.h \
+  /usr/local/include/glib-2.0/glib/gdir.h \
+  /usr/local/include/glib-2.0/glib/genviron.h \
+  /usr/local/include/glib-2.0/glib/gfileutils.h \
+  /usr/local/include/glib-2.0/glib/ggettext.h \
+  /usr/local/include/glib-2.0/glib/ghash.h \
+  /usr/local/include/glib-2.0/glib/glist.h \
+  /usr/local/include/glib-2.0/glib/gmem.h \
+  /usr/local/include/glib-2.0/glib/gnode.h \
+  /usr/local/include/glib-2.0/glib/ghmac.h \
+  /usr/local/include/glib-2.0/glib/gchecksum.h \
+  /usr/local/include/glib-2.0/glib/ghook.h \
+  /usr/local/include/glib-2.0/glib/ghostutils.h \
+  /usr/local/include/glib-2.0/glib/giochannel.h \
+  /usr/local/include/glib-2.0/glib/gmain.h \
+  /usr/local/include/glib-2.0/glib/gpoll.h \
+  /usr/local/include/glib-2.0/glib/gslist.h \
+  /usr/local/include/glib-2.0/glib/gstring.h \
+  /usr/local/include/glib-2.0/glib/gunicode.h \
+  /usr/local/include/glib-2.0/glib/gutils.h \
+  /usr/local/include/glib-2.0/glib/gkeyfile.h \
+  /usr/local/include/glib-2.0/glib/gmappedfile.h \
+  /usr/local/include/glib-2.0/glib/gmarkup.h \
+  /usr/local/include/glib-2.0/glib/gmessages.h \
+  /usr/local/include/glib-2.0/glib/goption.h \
+  /usr/local/include/glib-2.0/glib/gpattern.h \
+  /usr/local/include/glib-2.0/glib/gprimes.h \
+  /usr/local/include/glib-2.0/glib/gqsort.h \
+  /usr/local/include/glib-2.0/glib/gqueue.h \
+  /usr/local/include/glib-2.0/glib/grand.h \
+  /usr/local/include/glib-2.0/glib/gregex.h \
+  /usr/local/include/glib-2.0/glib/gscanner.h \
+  /usr/local/include/glib-2.0/glib/gsequence.h \
+  /usr/local/include/glib-2.0/glib/gshell.h \
+  /usr/local/include/glib-2.0/glib/gslice.h \
+  /usr/local/include/glib-2.0/glib/gspawn.h \
+  /usr/local/include/glib-2.0/glib/gstrfuncs.h \
+  /usr/local/include/glib-2.0/glib/gstringchunk.h \
+  /usr/local/include/glib-2.0/glib/gtestutils.h \
+  /usr/local/include/glib-2.0/glib/gthreadpool.h \
+  /usr/local/include/glib-2.0/glib/gtimer.h \
+  /usr/local/include/glib-2.0/glib/gtrashstack.h \
+  /usr/local/include/glib-2.0/glib/gtree.h \
+  /usr/local/include/glib-2.0/glib/gurifuncs.h \
+  /usr/local/include/glib-2.0/glib/gvarianttype.h \
+  /usr/local/include/glib-2.0/glib/gvariant.h \
+  /usr/local/include/glib-2.0/glib/gversion.h \
+  /usr/local/include/glib-2.0/glib/deprecated/gallocator.h \
+  /usr/local/include/glib-2.0/glib/deprecated/gcache.h \
+  /usr/local/include/glib-2.0/glib/deprecated/gcompletion.h \
+  /usr/local/include/glib-2.0/glib/deprecated/gmain.h \
+  /usr/local/include/glib-2.0/glib/deprecated/grel.h \
+  /usr/local/include/glib-2.0/glib/deprecated/gthread.h \
+  /usr/include/pthread.h /usr/include/sched.h \
+  /usr/local/include/glib-2.0/gobject/gobject.h \
+  /usr/local/include/glib-2.0/gobject/gtype.h \
+  /usr/local/include/glib-2.0/gobject/gvalue.h \
+  /usr/local/include/glib-2.0/gobject/gparam.h \
+  /usr/local/include/glib-2.0/gobject/gclosure.h \
+  /usr/local/include/glib-2.0/gobject/gsignal.h \
+  /usr/local/include/glib-2.0/gobject/gmarshal.h \
+  /usr/local/include/glib-2.0/gobject/gboxed.h \
+  /usr/local/include/glib-2.0/gobject/glib-types.h \
+  /usr/local/include/glib-2.0/gobject/genums.h \
+  /usr/local/include/glib-2.0/gobject/gparamspecs.h \
+  /usr/local/include/glib-2.0/gobject/gsourceclosure.h \
+  /usr/local/include/glib-2.0/gobject/gtypemodule.h \
+  /usr/local/include/glib-2.0/gobject/gtypeplugin.h \
+  /usr/local/include/glib-2.0/gobject/gvaluearray.h \
+  /usr/local/include/glib-2.0/gobject/gvaluetypes.h debug.h caps.h \
+  matcher.h vtetc.h table.h trie.h
+
+../config.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/endian.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/sys/_pthreadtypes.h:
+
+/usr/include/sys/_stdint.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/sys/_sigset.h:
+
+/usr/include/sys/_timeval.h:
+
+/usr/include/sys/timespec.h:
+
+/usr/include/sys/_timespec.h:
+
+/usr/include/string.h:
+
+/usr/include/sys/_null.h:
+
+/usr/include/strings.h:
+
+/usr/include/xlocale/_string.h:
+
+/usr/local/include/glib-2.0/glib-object.h:
+
+/usr/local/include/glib-2.0/gobject/gbinding.h:
+
+/usr/local/include/glib-2.0/glib.h:
+
+/usr/local/include/glib-2.0/glib/galloca.h:
+
+/usr/local/include/glib-2.0/glib/gtypes.h:
+
+/usr/local/include/glib-2.0/glibconfig.h:
+
+/usr/local/include/glib-2.0/glib/gmacros.h:
+
+/usr/include/stddef.h:
+
+/usr/include/limits.h:
+
+/usr/include/sys/limits.h:
+
+/usr/include/machine/_limits.h:
+
+/usr/include/sys/syslimits.h:
+
+/usr/include/float.h:
+
+/usr/local/include/glib-2.0/glib/gversionmacros.h:
+
+/usr/include/time.h:
+
+/usr/include/xlocale/_time.h:
+
+/usr/local/include/glib-2.0/glib/garray.h:
+
+/usr/local/include/glib-2.0/glib/gasyncqueue.h:
+
+/usr/local/include/glib-2.0/glib/gthread.h:
+
+/usr/local/include/glib-2.0/glib/gatomic.h:
+
+/usr/local/include/glib-2.0/glib/gerror.h:
+
+/usr/include/stdarg.h:
+
+/usr/local/include/glib-2.0/glib/gquark.h:
+
+/usr/local/include/glib-2.0/glib/gbacktrace.h:
+
+/usr/include/signal.h:
+
+/usr/include/sys/signal.h:
+
+/usr/include/machine/signal.h:
+
+/usr/include/machine/trap.h:
+
+/usr/local/include/glib-2.0/glib/gbase64.h:
+
+/usr/local/include/glib-2.0/glib/gbitlock.h:
+
+/usr/local/include/glib-2.0/glib/gbookmarkfile.h:
+
+/usr/local/include/glib-2.0/glib/gbytes.h:
+
+/usr/local/include/glib-2.0/glib/gcharset.h:
+
+/usr/local/include/glib-2.0/glib/gchecksum.h:
+
+/usr/local/include/glib-2.0/glib/gconvert.h:
+
+/usr/local/include/glib-2.0/glib/gdataset.h:
+
+/usr/local/include/glib-2.0/glib/gdate.h:
+
+/usr/local/include/glib-2.0/glib/gdatetime.h:
+
+/usr/local/include/glib-2.0/glib/gtimezone.h:
+
+/usr/local/include/glib-2.0/glib/gdir.h:
+
+/usr/local/include/glib-2.0/glib/genviron.h:
+
+/usr/local/include/glib-2.0/glib/gfileutils.h:
+
+/usr/local/include/glib-2.0/glib/ggettext.h:
+
+/usr/local/include/glib-2.0/glib/ghash.h:
+
+/usr/local/include/glib-2.0/glib/glist.h:
+
+/usr/local/include/glib-2.0/glib/gmem.h:
+
+/usr/local/include/glib-2.0/glib/gnode.h:
+
+/usr/local/include/glib-2.0/glib/ghmac.h:
+
+/usr/local/include/glib-2.0/glib/gchecksum.h:
+
+/usr/local/include/glib-2.0/glib/ghook.h:
+
+/usr/local/include/glib-2.0/glib/ghostutils.h:
+
+/usr/local/include/glib-2.0/glib/giochannel.h:
+
+/usr/local/include/glib-2.0/glib/gmain.h:
+
+/usr/local/include/glib-2.0/glib/gpoll.h:
+
+/usr/local/include/glib-2.0/glib/gslist.h:
+
+/usr/local/include/glib-2.0/glib/gstring.h:
+
+/usr/local/include/glib-2.0/glib/gunicode.h:
+
+/usr/local/include/glib-2.0/glib/gutils.h:
+
+/usr/local/include/glib-2.0/glib/gkeyfile.h:
+
+/usr/local/include/glib-2.0/glib/gmappedfile.h:
+
+/usr/local/include/glib-2.0/glib/gmarkup.h:
+
+/usr/local/include/glib-2.0/glib/gmessages.h:
+
+/usr/local/include/glib-2.0/glib/goption.h:
+
+/usr/local/include/glib-2.0/glib/gpattern.h:
+
+/usr/local/include/glib-2.0/glib/gprimes.h:
+
+/usr/local/include/glib-2.0/glib/gqsort.h:
+
+/usr/local/include/glib-2.0/glib/gqueue.h:
+
+/usr/local/include/glib-2.0/glib/grand.h:
+
+/usr/local/include/glib-2.0/glib/gregex.h:
+
+/usr/local/include/glib-2.0/glib/gscanner.h:
+
+/usr/local/include/glib-2.0/glib/gsequence.h:
+
+/usr/local/include/glib-2.0/glib/gshell.h:
+
+/usr/local/include/glib-2.0/glib/gslice.h:
+
+/usr/local/include/glib-2.0/glib/gspawn.h:
+
+/usr/local/include/glib-2.0/glib/gstrfuncs.h:
+
+/usr/local/include/glib-2.0/glib/gstringchunk.h:
+
+/usr/local/include/glib-2.0/glib/gtestutils.h:
+
+/usr/local/include/glib-2.0/glib/gthreadpool.h:
+
+/usr/local/include/glib-2.0/glib/gtimer.h:
+
+/usr/local/include/glib-2.0/glib/gtrashstack.h:
+
+/usr/local/include/glib-2.0/glib/gtree.h:
+
+/usr/local/include/glib-2.0/glib/gurifuncs.h:
+
+/usr/local/include/glib-2.0/glib/gvarianttype.h:
+
+/usr/local/include/glib-2.0/glib/gvariant.h:
+
+/usr/local/include/glib-2.0/glib/gversion.h:
+
+/usr/local/include/glib-2.0/glib/deprecated/gallocator.h:
+
+/usr/local/include/glib-2.0/glib/deprecated/gcache.h:
+
+/usr/local/include/glib-2.0/glib/deprecated/gcompletion.h:
+
+/usr/local/include/glib-2.0/glib/deprecated/gmain.h:
+
+/usr/local/include/glib-2.0/glib/deprecated/grel.h:
+
+/usr/local/include/glib-2.0/glib/deprecated/gthread.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/local/include/glib-2.0/gobject/gobject.h:
+
+/usr/local/include/glib-2.0/gobject/gtype.h:
+
+/usr/local/include/glib-2.0/gobject/gvalue.h:
+
+/usr/local/include/glib-2.0/gobject/gparam.h:
+
+/usr/local/include/glib-2.0/gobject/gclosure.h:
+
+/usr/local/include/glib-2.0/gobject/gsignal.h:
+
+/usr/local/include/glib-2.0/gobject/gmarshal.h:
+
+/usr/local/include/glib-2.0/gobject/gboxed.h:
+
+/usr/local/include/glib-2.0/gobject/glib-types.h:
+
+/usr/local/include/glib-2.0/gobject/genums.h:
+
+/usr/local/include/glib-2.0/gobject/gparamspecs.h:
+
+/usr/local/include/glib-2.0/gobject/gsourceclosure.h:
+
+/usr/local/include/glib-2.0/gobject/gtypemodule.h:
+
+/usr/local/include/glib-2.0/gobject/gtypeplugin.h:
+
+/usr/local/include/glib-2.0/gobject/gvaluearray.h:
+
+/usr/local/include/glib-2.0/gobject/gvaluetypes.h:
+
+debug.h:
+
+caps.h:
+
+matcher.h:
+
+vtetc.h:
+
+table.h:
+
+trie.h:

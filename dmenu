@@ -1,1 +1,2 @@
- dmenu_run -fn "-beastie-gohufontmod11-medium-r-normal--11-80-100-100-c-60-iso8859-1" -h 22 -b -nb "#080808" -nf "#808080" -sb "#333333" -p ">"
+# Get dmenu from github.com/israellevin/dmenu, delete .cache/dmenu_run if PATH is not complete.
+ dmenu_run -fn "-beastie-gohufontmod11-medium-r-normal--11-80-100-100-c-60-iso8859-1" -b -nb "#080808" -nf "#808080" -sb "#333333" -p ">"

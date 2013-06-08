@@ -1,0 +1,706 @@
+# -*- shell-script -*-
+
+### Time-stamp: <2010-06-15 11:33:31 MEST>
+
+### CTWM configuration file by Michael Cardell Widerkrantz, mc at
+### hack.org, http://hack.org/mc/
+###
+### Grey and white 2D look that works with or without title bars.
+### Provides keybindings and mouse actions for common tasks like
+### moving, zooming and warping between on screen windows. No keyboard
+### resize, I'm afraid.
+
+# Remember the state of client windows if we're started after another
+# window manager.
+RestartPreviousState
+
+Color
+{
+    DefaultBackground "dimgrey"
+    DefaultForeground "white"
+
+    # Border on focused window
+    BorderColor "grey90"
+
+    # Amber:
+#    BorderColor "#ff7f24"
+
+    # Border on unfocused windows. 
+    #
+    # If we define both of these to the same colour, we get a solid
+    # border. Otherwise stippled.
+    BorderTileBackground "grey40"
+    BorderTileForeground "grey40"
+
+    MenuBackground "dimgrey"
+    MenuForeground "white"
+    MenuTitleBackground "dimgrey"
+    MenuTitleForeground "white"
+
+    TitleBackground "dimgrey"
+    TitleForeground "white"
+
+    IconManagerBackground "dimgrey"
+    IconManagerForeground "white"
+    IconManagerHighlight "white"
+
+    MapWindowBackground "dimgray"
+    MapWindowForeground "white"
+}
+
+### Some nice colours I want to remember.
+# Nice blue colour: "#676788"
+# Nice dark blue: #002441
+# Another blue: #383c8e
+# Ditto green: "#278827"
+# Nice grey: "#6a6e72"
+# Nicer #717971
+# Very dark grey "#3a404b"
+
+# Very nice blue colour: #383c8e
+# blue: #003366
+
+### You may have to change the XorValue variable depending on how
+### different colours are in your palette. This is a good XOR value on
+### an 8 bit display like the cgsix on my Sun SPARCstation 5. On more
+### modern hardware this is generally not needed.
+#XorValue 1
+
+### Nice pointer glyphs depending on where the mouse has moved the
+### pointer.
+Cursors
+{
+    Frame "left_ptr"
+    Title "left_ptr"
+    Move "fleur"
+    Resize "sizing"
+    Menu "right_ptr"
+    Button "right_ptr"
+    Wait "watch"
+    Select "target"
+    Destroy "pirate"
+    Icon "box_spiral"
+    IconMgr "left_ptr"
+}
+
+Pixmaps
+{
+    TitleHighlight "/home/mc/solid.xbm"
+
+    # The solid.xbm file above is a a solid white image. The entire
+    # file looks like this:
+    #
+    #  ----------------- 8< -----------------
+    #  #define solid_width 8
+    #  #define solid_height 8
+    #  static char solid_bits[] = {
+    #  0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 
+    #  0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+    #  ----------------- 8< -----------------
+    # 
+    # That's it. Save the above in a file and use the path to it
+    # above.
+}
+
+TitleFont "9x15"
+MenuFont "9x15"
+ResizeFont "10x20"
+WorkSpaceFont "5x7"
+IconManagerFont "9x15"
+
+TitleJustification "left"
+
+### Go directly to the menu entry if the user taps the corresponding
+### key, ignoring case.
+IgnoreCaseInMenuSelection
+
+DecorateTransients              # Temporary child windows also get decorations.
+
+NoGrabServer                    # Permit X events to update server
+				# while doing other stuff.
+
+UsePPosition "on"              # Honour window's own idea of placement
+			       # when opening.
+
+WarpCursor	      # Move cursor to middle of window when unhiding.
+DontMoveOff	      # Keep things on the physical screen.
+
+### Remove the the "opaque" lines below if you're on a fast display
+### and you can move the contents of the windows instead of an
+### outline. Not quite usable on an unaccellerated X server, slow
+### graphics hardware or if you're running over the network with lots
+### of latency.
+#OpaqueMove
+#OpaqueResize
+
+### Size of windows (in percentage of the screen estate) where ctwm
+### will show windows' contents while moving or resizing.
+#OpaqueMoveThreshold 40
+#OpaqueResizeThreshold 10
+
+### Sloppy focus will only work in CTWM versions >= 3.6 and not very
+### well.
+#SloppyFocus
+
+### Try not to overlap existing windows when mapping a new window.
+#PackNewWindows
+
+### Place new windows wherever. Not very random, however.
+RandomPlacement "on"
+
+# No icons, please. Ever. Just make the windows disappear.
+IconifyByUnmapping
+
+### Don't show icon managers or workspaces in windows or icon menus.
+ShortAllWindowsMenus
+
+### But let the menus stay up on screen.
+StayUpMenus
+
+### Uncomment if you want the feedback window when resizing et c in
+### the middle of the screen and not in top left corner. Note that
+### with Xinerama with two screens, this usually means that the window
+### will be shared between two screens!
+# CenterFeedbackWindow
+
+### Avoid 'technicolor effect' on decorations if we have very few
+### colours, like if you have 8 bit graphics, say.
+SaveColor
+{
+    BorderColor
+    BorderTileBackground
+    BorderTileForeground
+    TitleBackground
+    TitleForeground
+}
+
+### If I set the root window to contain something nice to look at, I
+### don't want ctwm to repaint it when I shift workspaces.
+DontPaintRootWindow
+
+#Set up 10 workspaces. We don't define the root background colour,
+#because we use the same colour on every workspace and use
+#MapWindowDefaultWorkSpace below instead.
+WorkSpaces
+{
+    "1" { "dimgray" "white" }
+    "2" { "dimgray" "white" }
+    "3" { "dimgray" "white" }
+    "4" { "dimgray" "white" }
+    "5" { "dimgray" "white" }
+    "6" { "dimgray" "white" }
+    "7" { "dimgray" "white" }
+    "8" { "dimgray" "white" }
+    "9" { "dimgray" "white" }
+    "10" { "dimgray" "white" }
+}
+
+# When changing workspace, restore the focus to the window in this
+# workspace which last had it.
+SaveWorkspaceFocus
+
+### Configuration of the workspace manager, if visible at all.
+#ShowWorkSpaceManager
+WorkSpaceManagerGeometry "400x60-0-0" 10 # Where to place it.
+StartInMapState # Show little windows...
+UseThreeDWMap # ...in 3D.
+# Uncomment if you want reverse colours to mark current workspace.
+#ReverseCurrentWorkSpace
+MapWindowCurrentWorkSpace { "rgb:c/c/c" "grey50" "white" }
+MapWindowDefaultWorkSpace { "black" "grey20" "white" }
+WMgrButtonShadowDepth 0
+WMgrHorizButtonIndent 0
+WMgrVertButtonIndent 0
+
+### Don't show windows that occupies all workspaces in the workspace
+### manager.
+NoShowOccupyAll
+
+### Menu config
+#UseThreeDMenus
+MenuShadowDepth 1
+
+### Paint a thin border around windows.
+BorderWidth 1
+
+# But if we're running a ctwm, we might want to use slightly thicker
+# 3D borders with a 1 pixel shadow. Uncomment below to use them.
+#UseThreeDBorders
+ThreeDBorderWidth 2
+BorderShadowDepth 1
+
+### But use no borders at all for these clients.
+#NoBorder
+#{
+#    "xclock"
+#}
+
+# Make a resize cursor if the user points to the border. Kind of hard
+# with a 1 pixel border, though. Use with f.resize and bind it to a
+# button in frame context.
+#BorderResizeCursors
+
+### 3D effect on titles. Uncomment to use.
+UseThreeDTitles
+TitleShadowDepth 1
+
+#FramePadding 1 # Margin beetwen decorations and border in title.
+
+### The window with focus gets a decoration in the title bar. The
+### default is a stipple pattern which is a pain over VNC. Above I
+### have asked to use a small solid bitmap instead. If you don't want
+### any such highlight, uncomment this.
+#NoTitleHighlight
+
+# Mark focus with a sunken title bar if we have 3D titles.
+#SunkFocusWindowTitle
+
+### Uncomment for tight titles squeezed to the left side.
+#SqueezeTitle
+
+# Use no titles on windows whatsoever.
+Notitle
+
+### If we turn on titles above, dont draw a title bar on top of these
+### windows.
+Notitle
+{
+    "WorkSpaceManager"
+    "dclock"
+    "xbiff"
+    "bbmail"
+    "xclock"
+    "xeyes"
+    "xmcbiff"
+}
+
+# Place windows with these names on the designated workspaces.
+#Occupy
+#{
+#    Workspace "3" {"foo"}
+#}
+
+### Put these windows on all workspaces.
+OccupyAll
+{
+    "WorkSpaceManager"
+    "dclock"
+    "xclock"
+    "rclock"
+    "xbiff"
+    "xmcbiff"
+}
+
+### Make window automatically occupy the right screen if they change
+### names.
+#AutoOccupy
+
+### I want transient windows to be able to occupy other workspaces
+### than their parent window. Incidentally, this setting also makes
+### f.occupy work on GTK programs. They seem to create an invisible
+### parent window for some reason. Perhaps it's a bug?
+#TransientHasOccupation
+
+### No default buttons on title bar.
+NoDefaults
+
+### Functions
+
+### Move current window to another workspace.
+Function "toone"
+{ 
+    f.addtoworkspace "1"  
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "totwo"
+{ 
+    f.removefromworkspace "1"
+    f.addtoworkspace "2"  
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "tothree"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.addtoworkspace "3"  
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "tofour"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.addtoworkspace "4"  
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "tofive"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.addtoworkspace "5"  
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "tosix"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.addtoworkspace "6"  
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "toseven"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.addtoworkspace "7"  
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "toeight"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.addtoworkspace "8"  
+    f.removefromworkspace "9"
+    f.removefromworkspace "10"
+}
+
+Function "tonine"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.addtoworkspace "9"  
+    f.removefromworkspace "10"
+}
+
+Function "toten"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+    f.addtoworkspace "10"  
+}
+
+### The buttons on the title bar. Sort of classic Macintosh-like with
+### Close Window on the left and Zoom (vertical zoom, toggles, on
+### first button, horizontal zoom on second and maximize on third) on
+### the right followed by a resize button. Years of refinement has
+### told me that these are the functions I use the most, but, of
+### course, you can see my TWM background from miles away.
+
+### If you click anywhere else on the title bar, mouse button one
+### moves the window, the middle raises or lowers the window and the
+### third gives you a menu of window ops.
+
+#LeftTitleButton ":dot" {
+# For a 3D version, uncomment:
+LeftTitleButton ":xpm:dot" {
+    Button1 = f.delete
+    Button2 = f.destroy
+}
+
+RightTitleButton ":xpm:box" {
+    Button1 = f.zoom
+    Button2 = f.hzoom
+    Button3 = f.fullzoom
+}
+
+#RightTitleButton ":resize" {
+# For a 3D version, uncomment:
+RightTitleButton ":xpm:resize" {
+    Button1 = f.resize
+}
+
+TitleButtonBorderWidth 0
+ButtonIndent 0
+TitleButtonShadowDepth 1
+
+# Start resizing right away, even without crossing a border.
+#AutoRelativeResize
+
+# When moving around windows, if we pass another window by this many
+# pixels, moving is resumed.
+MovePackResistance 20
+
+### The menus on the root window.
+
+Button1 = : root : f.menu "defops"
+
+### The TwmIcons menu is only available in ctwm versions >=3.5.2, but
+### very useful when its there. It shows a list of iconified windows
+### so there is no need for mapped icon managers.
+Button2 = : root : f.menu "TwmIcons"
+
+Button3 = : root : f.menu "programs"
+
+### If you can't run ctwm >= 3.5.2 for some reason, you will have to
+### make do with the TwmWindows menu. Uncomment below.
+# Button2 = : root : f.menu "TwmWindows"
+
+### Mouse buttons
+
+# Move window with left button, raise or lower with middle and show
+# a menu with the rightmost button.
+Button1 = : title : f.movepack
+Button2 = : title : f.raiselower
+Button3 = : title : f.menu "winops"
+
+# In the window, move with mod1 + button 1, raise with middle button
+# and resize with button 3.
+Button1 = mod1 : window : f.movepack
+Button2 = mod1 : window : f.raiselower
+Button3 = mod1 : window : f.resize
+
+### Not really used, since I have no icons visible.
+Button1 = : icon : f.function "move-or-iconify"
+Button2 = : icon : f.iconify
+Button1 = : iconmgr : f.iconify
+Button2 = : iconmgr : f.iconify
+
+### Move visible screen to a different workspaces with the Function
+### keys or Alt+number keys.
+"F1" = : all : f.gotoworkspace "1"
+"F2" = : all : f.gotoworkspace "2"
+"F3" = : all : f.gotoworkspace "3"
+"F4" = : all : f.gotoworkspace "4"
+"F5" = : all : f.gotoworkspace "5"
+"F6" = : all : f.gotoworkspace "6"
+"F7" = : all : f.gotoworkspace "7"
+"F8" = : all : f.gotoworkspace "8"
+"F9" = : all : f.gotoworkspace "9"
+"F10" = : all : f.gotoworkspace "10"
+
+"1" = mod2 : all : f.gotoworkspace "1"
+"2" = mod2 : all : f.gotoworkspace "2"
+"3" = mod2 : all : f.gotoworkspace "3"
+"4" = mod2 : all : f.gotoworkspace "4"
+"5" = mod2 : all : f.gotoworkspace "5"
+"6" = mod2 : all : f.gotoworkspace "6"
+"7" = mod2 : all : f.gotoworkspace "7"
+"8" = mod2 : all : f.gotoworkspace "8"
+"9" = mod2 : all : f.gotoworkspace "9"
+"10" = mod2 : all : f.gotoworkspace "10"
+
+### Send windows to other workspaces.
+"F1" = mod1 : all : f.function "toone"
+"F2" = mod1 : all : f.function "totwo"
+"F3" = mod1 : all : f.function "tothree"
+"F4" = mod1 : all : f.function "tofour"
+"F5" = mod1 : all : f.function "tofive"
+"F6" = mod1 : all : f.function "tosix"
+"F7" = mod1 : all : f.function "toseven"
+"F8" = mod1 : all : f.function "toeight"
+"F9" = mod1 : all : f.function "tonine"
+"F10" = mod1 : all : f.function "toten"
+
+"1" = mod2 | control : all : f.function "toone"
+"2" = mod2 | control : all : f.function "totwo"
+"3" = mod2 | control : all : f.function "tothree"
+"4" = mod2 | control : all : f.function "tofour"
+"5" = mod2 | control : all : f.function "tofive"
+"6" = mod2 | control : all : f.function "tosix"
+"7" = mod2 | control : all : f.function "toseven"
+"8" = mod2 | control : all : f.function "toeight"
+"9" = mod2 | control : all : f.function "tonine"
+"10" = mod2  | control : all : f.function "toten"
+
+### Occupy all workspaces. Doesn't toggle, I'm afraid.
+"f" = mod2 : all : f.occupyall
+
+### Move windows about with Alt + vi-like keys or arrow keys.
+"Up" = mod2 : all : f.jumpup "20"
+"Left" = mod2 : all : f.jumpleft "20"
+"Right" = mod2 : all: f.jumpright "20"
+"Down" = mod2 : all : f.jumpdown "20"
+
+"k" = mod2 : all : f.jumpup "20"
+"h" = mod2 : all : f.jumpleft "20"
+"l" = mod2 : all: f.jumpright "20"
+"j" = mod2 : all : f.jumpdown "20"
+
+### Maximize a window vertically.
+"m" = mod2 : all: f.zoom
+
+### Maximize a window to cover full screen.
+"x" = mod2 : all: f.fullzoom
+
+### Kill a window.
+#"k" = mod1 | mod3 : all: f.delete
+
+### Raise or lower window.
+"r" = mod2 : all : f.raiselower
+
+### Hide a window.
+#"z" = mod2 : all : f.iconify
+
+### Program shortcuts.
+"Return" = mod2 : all: f.exec "LANG=en_US.UTF-8;urxvt &"
+
+### Move around focus on current workspace.
+#WindowRing
+WarpRingOnScreen
+WindowRingExclude
+{
+	"WorkSpaceManager"
+	"xbiff"
+	"dclock"
+	"xclock"
+	"bbmail"
+	"xmcbiff"
+}
+
+# Move around in warp ring with S-p, S-n and S-Tab.
+"p" = mod2 : all : f.warpring "prev"
+"n" = mod2 : all : f.warpring "next"
+"Tab" = mod2 : all : f.warpring "next"
+# Would be nice if this worked with Xinerama:
+"," = mod2 : all :  f.warptoscreen "prev"
+"." = mod2 : all :  f.warptoscreen "next"
+
+### A menu with the usual window manager things, in case you need
+### them.
+menu "defops"
+{
+    "CTWM"	f.title
+    "Hide..."	f.iconify
+    "Resize..."	f.resize
+    "Move..."	f.movepack
+    "Raise..."	f.raise
+    "Lower..."	f.lower
+    "Zoom..."   f.zoom
+    ""		f.nop
+    "Focus..."	f.focus
+    "Unfocus..." f.unfocus
+    ""          f.nop
+
+    "Occupy..." f.occupy
+    "Occupy all..." f.occupyall
+    ""		f.nop
+    "Kill..."	f.destroy
+    "Delete..."	f.delete
+    ""		f.nop
+    "Restart"	f.restart
+    ""		f.nop
+    "Exit"	f.quit
+}
+
+menu "winops"
+{
+    "Window Operations"	f.title
+    "Hide"	f.iconify
+    "Workspaces" f.occupy
+    "To All"	 f.occupyall
+    "To 1"    f.function "toone"
+    "To 2"    f.function "totwo"
+    "To 3"    f.function "tothree"
+    "To 4"    f.function "tofour"
+    "To 5"    f.function "tofive"
+    "To 6"    f.function "tosix"
+    "To 7"    f.function "toseven"
+    "To 8"    f.function "toeight"
+    "To 9"    f.function "tonine"
+    "To 10"   f.function "toten"
+}
+
+### Some useful tools I often start.
+menu "programs"
+{
+    "Programs"	f.title
+    "Lock"      f.exec "slock"
+    "Terminal"  f.exec "urxvt &"
+    "Terminal Gacha"  f.exec "urxvt -fn '-bellcore-gacha-medium-r-normal--16-160-72-72-c-60-iso8859-1' &"
+    "Terminal 9x15" f.exec "urxvt -fn 9x15 &"
+    "Emacs"	f.exec "emacs &"
+    "Firefox"   f.exec "firefox&"
+    "Interface"   f.title
+    "Screens" f.menu "screens"
+    "Keyboards" f.menu "keyboards"
+}
+
+menu "screens"
+{
+    "Screens" f.title
+    "External Screen On" f.exec "xrandr --output VGA --auto"
+    "External Screen Off" f.exec "xrandr --output VGA --off"
+    "External Screen Right" f.exec "xrandr --output VGA --right-of LVDS"
+    "External Screen Same" f.exec "xrandr --output VGA --same-as LVDS"
+    "Internal Screen On" f.exec "xrandr --output LVDS --auto"
+    "Internal Screen Off" f.exec "xrandr --output LVDS --off"
+}
+
+menu "keyboards"
+{
+    "Keyboards" f.title
+    "HHKB US" f.exec "xmodmap /home/mc/lib/xmodmap/hhkb-us.xmodmap"
+    "HHKB US SE" f.exec "xmodmap /home/mc/lib/xmodmap/hhkb-us-se.xmodmap"
+    "HHKB Swedish" f.exec "xmodmap /home/mc/lib/xmodmap/hhkb-se.xmodmap; xset r rate 180 60"
+    "Internal" f.exec "xmodmap /home/mc/lib/xmodmap/thinkpad-x60.xmodmap"
+}
+
+#...and no more.

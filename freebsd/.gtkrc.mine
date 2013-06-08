@@ -1,0 +1,14 @@
+gtk-icon-theme-name="Faenza"
+style "murrinestyle"
+{
+#remove the ugly stipple effect that the pixmap engine causes
+#remove the ugly distortion that the pixmap engine causes on disabled text
+    engine "murrine" {}
+}
+
+class "GtkImage" style "murrinestyle"
+class "GtkLabel" style "murrinestyle"
+class "GtkComboBox" style "murrinestyle"
+class "GtkCellView" style "murrinestyle"
+widget_class "*.<GtkButton>.<GtkLabel>" style "murrinestyle"
+widget_class "*.<GtkComboBox>.<GtkCellView>" style "murrinestyle"
