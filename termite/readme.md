@@ -45,7 +45,7 @@ Now make sure to use the makefile from this repository.
 ``tar xzf working-vte.tar.gz``    
 ``cd vte-0.32.2-old``    
 ``cd gnome-pty-helper``     
-####change <utmp.h> by <utmpx.h> in gnome-pty-helper.c
+``replace <utmp.h> by <utmpx.h> in gnome-pty-helper.c``     
 ``cd ../``    
 ``./configure``    
 ``gmake``      
@@ -76,5 +76,3 @@ Now make sure to use the makefile from this repository.
 
 ``gmake``       
 ``sudo gmake install``     
-
-
