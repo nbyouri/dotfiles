@@ -6,30 +6,40 @@ servers = (
     ssl_verify = "no";
     ssl_catfile = "/home/youri/.irssi/certs/unixhub.pem";
     autoconnect = "yes";
-		password = "beastie:********";
+    password = "beastie:************";
   },
   {
     address = "irc.ircstorm.net";
     chatnet = "archbsd";
     autoconnect = "no";
+  },
+  {
+    address = "irc.rizon.net";
+    chatnet = "rizon";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+    autoconnect = "yes";
   }
 );
 
 chatnets = {
   conformal = { type = "IRC"; };
-  unixhub = {
-    type = "IRC";
-  };
+  unixhub = { type = "IRC"; };
   archbsd = { type = "IRC"; };
   Freenode = {
     type = "IRC";
     autosendcmd = "/msg nickserv identify password ;wait 2000";
   };
+  rizon = { type = "IRC"; };
 };
 
 channels = (
   { name = "#unixhub"; chatnet = "unixhub"; autojoin = "yes"; },
-  { name = "#archbsd"; chatnet = "archbsd"; autojoin = "yes"; }
+  { name = "#archbsd"; chatnet = "archbsd"; autojoin = "yes"; },
+  { name = "#/g/summer"; chatnet = "rizon"; autojoin = "yes"; },
+  { name = "#rice"; chatnet = "rizon"; autojoin = "yes"; },
+  { name = "#/g/sicp"; chatnet = "rizon"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -206,4 +216,5 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "jay"; timestamps = "no"; };
+  "perl/core/scripts" = { splitlong_max_length = "60"; };
 };
