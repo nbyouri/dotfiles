@@ -70,6 +70,7 @@ Now make sure to use the makefile from this repository.
 ###Add this to termite.cc, at the beginning:
 ``#include <errno.h>``      
 ``#include <math.h>``    
+``#include <sys/wait.h>``    
 ``#define	M_PI		3.14159265358979323846	/* pi */``     
 
 Now make sure to use the makefile from this repository.
