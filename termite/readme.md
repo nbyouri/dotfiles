@@ -29,9 +29,12 @@ Now make sure to use the makefile from this repository.
 ``sudo make install``     
 
 
-#Termite on FreeBSD:
+#Termite on FreeBSD:(tested on 9.1)
 
-##Install x11/gtk30
+##Install:
+- gtk3
+- gmake
+- intltool
 
 ##In /etc/make.conf, add:
 ``CC=clang``    
