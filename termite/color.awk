@@ -4,9 +4,8 @@
 # ./color.awk >> .termite.conf
 
 BEGIN {
-    cmd = "cat ~/.Xdefaults"
     print "[colors]"
-    while(cmd|getline) {
+    while(getline < (ENVIRON["HOME"] "/.Xdefaults")) {
         if(/\*color/&&!/^!/) {
             gsub(/\*color/, "color", $1);
             gsub(/\:/, " =", $1);
