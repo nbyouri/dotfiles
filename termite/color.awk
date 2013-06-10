@@ -1,4 +1,7 @@
 #!/usr/bin/awk -f
+# This is a Xdefaults 
+# color to termite converter.
+# ./color.awk >> .termite.conf
 
 BEGIN {
     cmd = "cat ~/.Xdefaults"
