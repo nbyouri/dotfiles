@@ -1,5 +1,5 @@
 ///---Modifiers---///
-#define MOD             XCB_MOD_MASK_2    /* Super/Windows key */
+#define MOD             XCB_MOD_MASK_4   /* Super/Windows key */
 ///--Speed---///
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise. 
  *0)move step slow   1)move step fast
@@ -28,6 +28,7 @@ static const char *ignore_f_names[] = {"xload"};
 #define CURSOR_MOVING 52
 #define CURSOR_RESIZING 120
 
+static const bool resize_by_line = true;
 ///--Menus and Programs---///
 static const char *menucmd[] = { "open", "-a", "Finder", "~" };
 static const char *terminal[] = { "termite", NULL };
@@ -35,7 +36,7 @@ static const char *dmenucmd[] = { "dnemu", NULL };
 static const char *mmenucmd[] = { "8menu", NULL };
 static const char *pausecmd[] = { "playpause", NULL };
 static const char *nextcmd[] = { "ncmpcpp", "next", NULL };
-static const char *twobwm_path = "/opt/local/bin/2bwm";
+static const char *twobwm_path = "/usr/local/bin/2bwm";
 
 ///---Shortcuts---///
 #define DESKTOPCHANGE(K,N) \
