@@ -52,14 +52,7 @@ int main(int argc, char *argv[])
         [Window makeKeyAndOrderFront: nil];
         
         [[Window contentView] addSubview: [[[ImageView alloc] initWithFrame: Frame Image: [[[NSImage alloc] initWithContentsOfFile: [NSString stringWithUTF8String: argv[1]]] autorelease]] autorelease]];
-        NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
-
-        for(NSRunningApplication *x11 in apps) {
-                if([x11.bundleIdentifier.lowercaseString isEqualToString:@"com.beastie.startx"]) {
-                        [x11 activateWithOptions:NSApplicationActivateAllWindows];
-                }
-        }
-
+        
         [[NSRunLoop currentRunLoop] run];
     }
     

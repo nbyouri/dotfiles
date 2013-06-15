@@ -242,3 +242,16 @@ zle -N expand-or-complete
 alias top='top -s1 -o cpu -R -F'
 # mutt background fix
 COLORFGBG="default;default"
+alias wifi='open -a "Wireless Network Utility"'
+alias cro='open -a "Chromium"'
+alias o='open .'
+alias xerg='launchctl start com.beastie.startx'
+if [[  $TERM == xterm-termite ]]; then
+    . /etc/profile.d/vte.sh
+
+    __vte_ps1
+
+    chpwd() {
+        __vte_ps1
+    }
+fi

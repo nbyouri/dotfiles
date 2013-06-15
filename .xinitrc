@@ -1,10 +1,10 @@
 #!/bin/zsh
 xsetroot -cursor_name left_ptr
-setbg ~/Pictures/Wallpapers/old_computer-wallpaper-1920x1080.jpg&
-mpdas &
+setbg ~/Pictures/Wallpapers/wallpaper-2801335.jpg&
+#mpdas &
 xset b off
-status|bar -p&
+unclutter -idle 1 -root&
+loop|bar -p&
 export HOME=/Users/youri
-urxvtd -q -o -f
-urxvtc&
+termite&
 2bwm

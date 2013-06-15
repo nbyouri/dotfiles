@@ -142,10 +142,10 @@ noremap <silent> <Space> :silent noh<Bar>echo<CR>
 MapToggle <F5> spell
 MapToggle <F6> hlsearch
 
-set noexpandtab
-set tabstop=2        " set tab keys to 2 spaces
+set expandtab
+set tabstop=4        " set tab keys to 2 spaces
 set shiftwidth=4
-set noautoindent     " set noautoindent to prevent vim from
+" set autoindent     " set noautoindent to prevent vim from
                      " inserting unwanted indents when pasting
 " backspace
 set bs=2
