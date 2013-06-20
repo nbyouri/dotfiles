@@ -14,10 +14,8 @@
 
 
 ###Fetching termite:
-``git clone https://github.com/thestinger/termite``     
+``git clone --recursive https://github.com/thestinger/termite``     
 ``cd termite``    
-``rm -r util``    
-``git clone https://github.com/thestinger/util``    
 
 ###Add this to termite.cc, at the beginning:
 ``#include <errno.h>``      
@@ -57,10 +55,8 @@ Now make sure to use the makefile from this repository.
 
 
 ###Fetching termite:
-``git clone https://github.com/thestinger/termite``     
+``git clone --recursive https://github.com/thestinger/termite``     
 ``cd termite``    
-``rm -r util``    
-``git clone https://github.com/thestinger/util``    
 
 ###Get FreeBSD src if you dont have it:
 ``cd /usr/src/lib/licxxrt``     
