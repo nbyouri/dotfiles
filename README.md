@@ -4,4 +4,4 @@ Beastie's dotfiles
 
 Screenshot: 
 
-![](scrot.png)
+![](http://paste.unixhub.net/index.php/GPb56u/)
