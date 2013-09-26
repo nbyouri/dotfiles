@@ -1,7 +1,6 @@
 #TimeZone
 export TZ=Europe/Brussels
 #Home
-export HOME=/Users/youri
 #Locale
 #
 export LANG=en_US.UTF-8
