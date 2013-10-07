@@ -18,4 +18,4 @@ OSX Theme
 
 The osxtheme.zip file contains a great osx theme.
 
-The SArtfile.bin (traffic lights) won't work on Mavericks.
+The SArtfile.bin (traffic lights) won't work on Mac OS X Mavericks (10.9).
