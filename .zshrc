@@ -16,7 +16,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 export PAGER=less
 
-export PATH="/usr/local/lib/cw:$PATH"
+export PATH="/usr/pkg/bin:/usr/pkg/sbin:/usr/local/lib/cw:$PATH"
 
 alias solaris="sudo ssh -X ymouton@sunset.info.fundp.ac.be -D 80"
 #Colorgcc
@@ -49,7 +49,7 @@ function history-all { history -E 1 }
 
 export TERM=rxvt-256color
 # path
-export PATH=/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin
+export PATH=/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin
 
 
 # abbreviation for later use
@@ -254,3 +254,26 @@ if [[  $TERM == xterm-termite ]]; then
         __vte_ps1
     }
 fi
+findsym () {
+      [[ -z $1 ]] && return 1
+      SYMBOL=$1
+      LIBDIR=${2:-/usr/lib}
+      for lib in $LIBDIR/*.a
+      do 
+        nm $lib &> /dev/null | grep -q $SYMBOL && \
+        print "symbol found in $lib\n -L$LIBDIR -l${${lib:t:r}#lib}"
+      done
+}
+upb () {
+    cd ~/Documents/blog;
+    make html;
+    make ssh_upload;
+}
+alias hmp='pkg_info|wc -l'
+gpb () {
+    COM=$1
+    git add *;
+    git commit -m $COM;
+    git push;
+}
+
