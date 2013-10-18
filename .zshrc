@@ -273,7 +273,16 @@ alias hmp='pkg_info|wc -l'
 gpb () {
     COM=$1
     git add *;
-    git commit -m $COM;
+    git add .*;
+    git commit -m \'$COM\';
     git push;
 }
+cl () { 
+    cd $1; 
+    ls 
+}
 
+#
+# Key setup for Colemak on an HHKB.
+#
+bindkey '^E' backward-char
