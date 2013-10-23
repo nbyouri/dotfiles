@@ -36,7 +36,7 @@ function history-all { history -E 1 }
 export TERM=rxvt-256color
 
 # path
-export PATH=/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin
+export PATH=/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/pkg/bin:/usr/pkg/sbin
 
 # abbreviation for later use
 export EDITOR=vim
@@ -220,6 +220,7 @@ alias mplay='mplayer -msgmodule -msgcolor -aspect 16:9'
 alias w4m='w3m -cookie'
 alias w5m='w3m -cookie unixhub.net'
 alias xel='xelatex -interaction=nonstopmode'
+alias hmp='pkg_info|wc -l'
 
 ###
 #
