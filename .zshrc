@@ -1,11 +1,19 @@
-#TimeZone
-export TZ=Europe/Brussels
-#Home
-#Locale
 #
+# yrmt's zshrc.
+#
+# October 2013.
+#
+#
+#
+#
+# TimeZone
+export TZ=Europe/Brussels
+
+# Locale
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-#Colored ManPages
+
+# Colored ManPages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -16,28 +24,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 export PAGER=less
 
-export PATH="/usr/pkg/bin:/usr/pkg/sbin:/usr/local/lib/cw:$PATH"
-
-alias solaris="sudo ssh -X ymouton@sunset.info.fundp.ac.be -D 80"
-#Colorgcc
-#export CC=/usr/local/bin/colorgcc
-
-# -----/ aliases /-----
-alias rm='rm'    # Interactively
-alias mv='mv'    # Interactively
-alias cp='cp'    # Interactively
-alias spc='spc -c ~/.spcrc-c' 
-alias ls='ls -G'
-alias lsd='ls -dlf */'  # List directories
-alias ll='ls -l'        # Detailed list
-alias l='ls -laF'       # Detailed List
-alias cd..='cd ..'      # Parent directory
-
-# color grep
-export GREP_COLOR=32
-alias grep='grep --color'
-alias egrep='egrep --color'
- 
 # history
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=3000
@@ -46,21 +32,16 @@ setopt extended_history
 setopt share_history
 function history-all { history -E 1 }
 
-
+# Term variable
 export TERM=rxvt-256color
+
 # path
 export PATH=/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin
-
 
 # abbreviation for later use
 export EDITOR=vim
 export PAGER=less
 
-# Some default extension stuff
-alias mplay='mplayer -msgmodule -msgcolor -aspect 16:9'
-alias w4m='w3m -cookie'
-alias w5m='w3m -cookie unixhub.net'
-alias xel='xelatex -interaction=nonstopmode'
 ### OPTIONS ###
 #setopt PROMPT_SUBST
 setopt autopushd
@@ -96,6 +77,7 @@ zmodload -a zsh/zprof zprof
 # completion
 autoload -U compinit
 compinit
+
 ##
 ##  completion
 ##
@@ -126,35 +108,17 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 #zstyle '*' single-ignored show
 
-if [ -z "$LINES" ] || ! ( echo $LINES | grep -q '^[0-9]\+$' ) ; then
-      LINES=20
-fi
 
-function maxhead() { head -n `echo $LINES - 5|bc` ; }
-function maxtail() { tail -n `echo $LINES - 5|bc` ; }
-
-#PROMPT='%B%F{white}[%B%F{black}%~%B%F{white}]%B%F{white}--%B%F{yellow}> %f'
+# Prompt
 PROMPT='
 %B%F{black}──── %f'
 
-export PATH=/usr/local/lib/cw:$PATH
+###
+#
+# Live coloring.
+#
+###
 
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
-bindkey "^A" beginning-of-line
-bindkey "^O" end-of-line
-#!/bin/zsh
-
-# Copyleft 2010 paradoxxxzero All wrongs reserved
-# With contribution from James Ahlborn
-# https://gist.github.com/752727
-# Fork of https://gist.github.com/586698 by nicoulaj / dingram / roylzuo ...
-# From http://www.zsh.org/mla/users/2010/msg00692.html
-# Minor Mods here and there by Skinwalker aka Prem K. Murugan
-# http://skinwalker.wordpress.com
-
-# Token types styles.
-# See http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#SEC135
 ZLE_RESERVED_WORD_STYLE='fg=yellow,bold'
 ZLE_ALIAS_STYLE='fg=magenta,bold'
 ZLE_BUILTIN_STYLE='fg=cyan,bold'
@@ -229,22 +193,40 @@ for f in $ZLE_COLORED_FUNCTIONS; do
 eval "$f() { zle .$f && colorize-zle-buffer } ; zle -N $f"
 done
 
-# Expand or complete hack
-# Thanks to James Ahlborn :
-
 # create an expansion widget which mimics the original "expand-or-complete" (you can see the default setup using "zle -l -L")
 zle -C orig-expand-or-complete .expand-or-complete _main_complete
 
 # use the orig-expand-or-complete inside the colorize function (for some reason, using the ".expand-or-complete" widget doesn't work the same)
 expand-or-complete() { builtin zle orig-expand-or-complete && colorize-zle-buffer }
 zle -N expand-or-complete
-alias top='top -s1 -o cpu -R -F'
+
 # mutt background fix
 COLORFGBG="default;default"
+
+
+###
+#
+# Shell aliases.
+#
+###
 alias wifi='open -a "Wireless Network Utility"'
 alias cro='open -a "Chromium"'
 alias o='open .'
 alias xerg='launchctl start com.beastie.startx'
+alias top='top -s1 -o cpu -R -F'
+alias solaris="sudo ssh -X ymouton@sunset.info.fundp.ac.be -D 80"
+alias grep='grep --color'
+alias mplay='mplayer -msgmodule -msgcolor -aspect 16:9'
+alias w4m='w3m -cookie'
+alias w5m='w3m -cookie unixhub.net'
+alias xel='xelatex -interaction=nonstopmode'
+
+###
+#
+# Shell functions.
+#
+###
+
 if [[  $TERM == xterm-termite ]]; then
     . /etc/profile.d/vte.sh
 
@@ -254,6 +236,7 @@ if [[  $TERM == xterm-termite ]]; then
         __vte_ps1
     }
 fi
+
 findsym () {
       [[ -z $1 ]] && return 1
       SYMBOL=$1
@@ -264,12 +247,13 @@ findsym () {
         print "symbol found in $lib\n -L$LIBDIR -l${${lib:t:r}#lib}"
       done
 }
+
 upb () {
     cd ~/Documents/blog;
     make html;
     make ssh_upload;
 }
-alias hmp='pkg_info|wc -l'
+
 gpb () {
     COM=$1
     git add *;
@@ -277,12 +261,25 @@ gpb () {
     git commit -m \'$COM\';
     git push;
 }
+
 cl () { 
     cd $1; 
     ls 
 }
 
+case $TERM in
+    rxvt-256color*)
+        precmd () {print -Pn "\e]0; %~\a"}
+        ;;
+esac
+
+###
 #
 # Key setup for Colemak on an HHKB.
 #
+###
 bindkey '^E' backward-char
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+bindkey "^A" beginning-of-line
+bindkey "^O" end-of-line
