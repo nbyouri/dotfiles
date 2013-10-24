@@ -261,7 +261,7 @@ gpb () {
     COM=$1
     git add *;
     git add .*;
-    git commit -m \'$COM\';
+    git commit -m $COM;
     git push;
 }
 
