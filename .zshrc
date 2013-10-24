@@ -221,6 +221,8 @@ alias w4m='w3m -cookie'
 alias w5m='w3m -cookie unixhub.net'
 alias xel='xelatex -interaction=nonstopmode'
 alias hmp='pkg_info|wc -l'
+alias ls='ls -G'
+alias l='ls -lah'
 
 ###
 #
