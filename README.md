@@ -13,9 +13,3 @@ Screenshot:
 ![](http://paste.unixhub.net/index.php/Zcw0/)
 ![](http://paste.unixhub.net/index.php/2XY/)
 ![](http://fc03.deviantart.net/fs70/f/2013/069/3/f/_openbsd__cwm_and_xombrero_by_ybeastie-d5xkmbk.png)
-
-OSX Theme
-
-The osxtheme.zip file contains a great osx theme.
-
-The SArtfile.bin (traffic lights) won't work on Mac OS X Mavericks (10.9).
