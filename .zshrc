@@ -223,6 +223,12 @@ alias xel='xelatex -interaction=nonstopmode'
 alias hmp='pkg_info|wc -l'
 alias ls='ls -G'
 alias l='ls -lah'
+alias up=' rsync -avhz --progress /Volumes/Second/pkgsrc/packages/ root@saveosx.org:/usr/local/www/saveosx/packages/Darwin/2013Q2/x86_64/'
+alias pup='sudo pkgin up'
+alias pin='sudo pkgin -y in'
+alias pav='pkgin av'
+alias pls='pkgin ls'
+alias sauce='source ~/.zshrc'
 
 ###
 #
