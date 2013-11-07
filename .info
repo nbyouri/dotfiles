@@ -27,11 +27,11 @@ MODEL=$(sysctl -n hw.model)
 DISK_USAGE=$(df | awk '/disk0s2/{print$5}')
 PORTS=$(pkg_info|awk 'END {gsub(/\ /, "");print NR}')
 SHELL=$(echo $SHELL)
-UPTIME=$(justup)
+#UPTIME=$(justup)
 
 $e "${c3}OS:     ${c0}$OS $VERS ($BUILD)"
 $e "${c3}Kernel: ${c0}`uname -mrs`"
-$e "${c3}Uptime: ${c0}$UPTIME" 
+#$e "${c3}Uptime: ${c0}$UPTIME" 
 $e "${c3}Packs:  ${c0}$PORTS"
 $e "${c3}Shell:  ${c0}$SHELL"
 $e "${c3}Theme:  ${c0}`whoami`"

@@ -36,7 +36,7 @@ function history-all { history -E 1 }
 export TERM=rxvt-256color
 
 # path
-export PATH=/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/pkg/bin:/usr/pkg/sbin
+export PATH=/usr/pkg/lib/cw:/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/pkg/bin:/usr/pkg/sbin
 
 # abbreviation for later use
 export EDITOR=vim
@@ -229,6 +229,7 @@ alias pin='sudo pkgin -y in'
 alias pav='pkgin av'
 alias pls='pkgin ls'
 alias sauce='source ~/.zshrc'
+alias spc='spc -c /etc/supercat/spcrc-c'
 
 ###
 #
@@ -258,9 +259,13 @@ findsym () {
 }
 
 upb () {
-    cd ~/Documents/blog;
-    make html;
-    make ssh_upload;
+    cd ~/downloads/git/blog;
+    jekyll build;
+    rsync -avhz --progress _site/* root@saveosx.org:/usr/local/www/saveosx/blog/; 
+    git add -A;
+    git commit -m 'update';
+    git push;
+    cd -;
 }
 
 gpb () {
