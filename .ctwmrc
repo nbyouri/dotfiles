@@ -1,0 +1,486 @@
+# -*- shell-script -*-
+
+### Time-stamp: <2010-06-15 11:33:31 MEST>
+
+### CTWM configuration file by Michael Cardell Widerkrantz, mc at
+### hack.org, http://hack.org/mc/
+###
+### Grey and white 2D look that works with or without title bars.
+### Provides keybindings and mouse actions for common tasks like
+### moving, zooming and warping between on screen windows. No keyboard
+### resize, I'm afraid.
+
+# Remember the state of client windows if we're started after another
+# window manager.
+RestartPreviousState
+
+Color
+{
+    DefaultBackground "dimgrey"
+    DefaultForeground "white"
+
+    # Border on focused window
+    BorderColor "#1c678c"
+
+    # Amber:
+    # Border on unfocused windows. 
+    #
+    # If we define both of these to the same colour, we get a solid
+    # border. Otherwise stippled.
+    BorderTileBackground "#44484c"
+    BorderTileForeground "#44484c"
+
+    MenuBackground "dimgrey"
+    MenuForeground "white"
+    MenuTitleBackground "dimgrey"
+    MenuTitleForeground "white"
+
+    TitleBackground "dimgrey"
+    TitleForeground "white"
+
+    IconManagerBackground "black"
+    IconManagerForeground "white"
+    IconManagerHighlight "white"
+
+    MapWindowBackground "black"
+    MapWindowForeground "white"
+}
+
+### Nice pointer glyphs depending on where the mouse has moved the
+### pointer.
+Cursors
+{
+    Frame "left_ptr"
+    Title "left_ptr"
+    Move "left_ptr"
+    Resize "left_ptr"
+    Menu "left_ptr"
+    Button "left_ptr"
+    Wait "left_ptr"
+    Select "left_ptr"
+    Destroy "left_ptr"
+    Icon "left_ptr"
+    IconMgr "left_ptr"
+}
+
+TitleJustification "left"
+
+### Go directly to the menu entry if the user taps the corresponding
+### key, ignoring case.
+IgnoreCaseInMenuSelection
+
+DecorateTransients              # Temporary child windows also get decorations.
+
+NoGrabServer                    # Permit X events to update server
+				# while doing other stuff.
+
+UsePPosition "on"              # Honour window's own idea of placement
+			       # when opening.
+
+WarpCursor	      # Move cursor to middle of window when unhiding.
+DontMoveOff	      # Keep things on the physical screen.
+
+### Remove the the "opaque" lines below if you're on a fast display
+### and you can move the contents of the windows instead of an
+### outline. Not quite usable on an unaccellerated X server, slow
+### graphics hardware or if you're running over the network with lots
+### of latency.
+OpaqueMove
+OpaqueResize
+
+### Size of windows (in percentage of the screen estate) where ctwm
+### will show windows' contents while moving or resizing.
+#OpaqueMoveThreshold 40
+#OpaqueResizeThreshold 10
+
+### Sloppy focus will only work in CTWM versions >= 3.6 and not very
+### well.
+#SloppyFocus
+
+### Try not to overlap existing windows when mapping a new window.
+#PackNewWindows
+
+### Place new windows wherever. Not very random, however.
+RandomPlacement "on"
+
+# No icons, please. Ever. Just make the windows disappear.
+IconifyByUnmapping
+
+### Don't show icon managers or workspaces in windows or icon menus.
+ShortAllWindowsMenus
+
+### But let the menus stay up on screen.
+StayUpMenus
+
+### Uncomment if you want the feedback window when resizing et c in
+### the middle of the screen and not in top left corner. Note that
+### with Xinerama with two screens, this usually means that the window
+### will be shared between two screens!
+# CenterFeedbackWindow
+
+### Avoid 'technicolor effect' on decorations if we have very few
+### colours, like if you have 8 bit graphics, say.
+SaveColor
+{
+    BorderColor
+    BorderTileBackground
+    BorderTileForeground
+    TitleBackground
+    TitleForeground
+}
+WarpRingOnScreen
+WindowRingExclude
+{
+    "dclock"
+}
+### If I set the root window to contain something nice to look at, I
+### don't want ctwm to repaint it when I shift workspaces.
+DontPaintRootWindow
+
+#Set up 9 workspaces. We don't define the root background colour,
+#because we use the same colour on every workspace and use
+#MapWindowDefaultWorkSpace below instead.
+WorkSpaces
+{
+    "1" { "dimgray" "white" }
+    "2" { "dimgray" "white" }
+    "3" { "dimgray" "white" }
+    "4" { "dimgray" "white" }
+    "5" { "dimgray" "white" }
+    "6" { "dimgray" "white" }
+    "7" { "dimgray" "white" }
+    "8" { "dimgray" "white" }
+    "9" { "dimgray" "white" }
+}
+
+# When changing workspace, restore the focus to the window in this
+# workspace which last had it.
+SaveWorkspaceFocus
+
+### Configuration of the workspace manager, if visible at all.
+#ShowWorkSpaceManager
+#WorkSpaceManagerGeometry "400x60-0-0" 10 # Where to place it.
+StartInMapState # Show little windows...
+#UseThreeDWMap # ...in 3D.
+# Uncomment if you want reverse colours to mark current workspace.
+#ReverseCurrentWorkSpace
+MapWindowCurrentWorkSpace { "rgb:c/c/c" "grey50" "white" }
+MapWindowDefaultWorkSpace { "black" "grey20" "white" }
+WMgrButtonShadowDepth 0
+WMgrHorizButtonIndent 0
+WMgrVertButtonIndent 0
+
+### Don't show windows that occupies all workspaces in the workspace
+### manager.
+NoShowOccupyAll
+
+### Menu config
+#UseThreeDMenus
+MenuShadowDepth 1
+
+### Paint a thin border around windows.
+BorderWidth 5
+
+# But if we're running a ctwm, we might want to use slightly thicker
+# 3D borders with a 1 pixel shadow. Uncomment below to use them.
+#UseThreeDBorders
+ThreeDBorderWidth 2
+BorderShadowDepth 1
+
+### But use no borders at all for these clients.
+NoBorder
+{
+    "xclock"
+}
+
+# Make a resize cursor if the user points to the border. Kind of hard
+# with a 1 pixel border, though. Use with f.resize and bind it to a
+# button in frame context.
+#BorderResizeCursors
+
+### 3D effect on titles. Uncomment to use.
+#UseThreeDTitles
+#TitleShadowDepth 1
+
+#FramePadding 1 # Margin beetwen decorations and border in title.
+
+### The window with focus gets a decoration in the title bar. The
+### default is a stipple pattern which is a pain over VNC. Above I
+### have asked to use a small solid bitmap instead. If you don't want
+### any such highlight, uncomment this.
+#NoTitleHighlight
+
+# Mark focus with a sunken title bar if we have 3D titles.
+#SunkFocusWindowTitle
+
+### Uncomment for tight titles squeezed to the left side.
+#SqueezeTitle
+
+# Use no titles on windows whatsoever.
+Notitle
+
+### If we turn on titles above, dont draw a title bar on top of these
+### windows.
+Notitle
+{
+    "WorkSpaceManager"
+    "dclock"
+    "xbiff"
+    "bbmail"
+    "xclock"
+    "xeyes"
+    "xmcbiff"
+}
+
+# Place windows with these names on the designated workspaces.
+#Occupy
+#{
+#    Workspace "3" {"foo"}
+#}
+
+### Put these windows on all workspaces.
+OccupyAll
+{
+    "WorkSpaceManager"
+    "dclock"
+    "xclock"
+    "rclock"
+    "xbiff"
+    "xmcbiff"
+}
+
+### No default buttons on title bar.
+NoDefaults
+
+### Functions
+
+### Move current window to another workspace.
+Function "toone"
+{ 
+    f.addtoworkspace "1"  
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "totwo"
+{ 
+    f.removefromworkspace "1"
+    f.addtoworkspace "2"  
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "tothree"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.addtoworkspace "3"  
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "tofour"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.addtoworkspace "4"  
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "tofive"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.addtoworkspace "5"  
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "tosix"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.addtoworkspace "6"  
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "toseven"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.addtoworkspace "7"  
+    f.removefromworkspace "8"
+    f.removefromworkspace "9"
+}
+
+Function "toeight"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.addtoworkspace "8"  
+    f.removefromworkspace "9"
+}
+
+Function "tonine"
+{ 
+    f.removefromworkspace "1"
+    f.removefromworkspace "2"
+    f.removefromworkspace "3"
+    f.removefromworkspace "4"
+    f.removefromworkspace "5"
+    f.removefromworkspace "6"
+    f.removefromworkspace "7"
+    f.removefromworkspace "8"
+    f.addtoworkspace "9"  
+}
+
+TitleButtonBorderWidth 0
+ButtonIndent 0
+TitleButtonShadowDepth 1
+
+# Start resizing right away, even without crossing a border.
+AutoRelativeResize
+
+# When moving around windows, if we pass another window by this many
+# pixels, moving is resumed.
+MovePackResistance 20
+
+### Mouse buttons
+Button3 = : title : f.menu "programs"
+Button1 = mod2 : window : f.movepack
+Button2 = mod2 : window : f.raiselower
+Button3 = mod2 : window : f.resize
+
+### Move visible screen to a different workspaces with the Function
+"1" = mod2 : all : f.gotoworkspace "1"
+"2" = mod2 : all : f.gotoworkspace "2"
+"3" = mod2 : all : f.gotoworkspace "3"
+"4" = mod2 : all : f.gotoworkspace "4"
+"5" = mod2 : all : f.gotoworkspace "5"
+"6" = mod2 : all : f.gotoworkspace "6"
+"7" = mod2 : all : f.gotoworkspace "7"
+"8" = mod2 : all : f.gotoworkspace "8"
+"9" = mod2 : all : f.gotoworkspace "9"
+
+### Send windows to other workspaces.
+"1" = mod2 | shift : all : f.function "toone"
+"2" = mod2 | shift : all : f.function "totwo"
+"3" = mod2 | shift : all : f.function "tothree"
+"4" = mod2 | shift : all : f.function "tofour"
+"5" = mod2 | shift : all : f.function "tofive"
+"6" = mod2 | shift : all : f.function "tosix"
+"7" = mod2 | shift : all : f.function "toseven"
+"8" = mod2 | shift : all : f.function "toeight"
+"9" = mod2 | shift : all : f.function "tonine"
+
+### Occupy all workspaces. Doesn't toggle, I'm afraid.
+"f" = mod2 : all : f.occupyall
+
+### Move windows about with Alt + vi-like keys or arrow keys.
+"Up"    = mod2 : all : f.jumpup "20"
+"Left"  = mod2 : all : f.jumpleft "20"
+"Right" = mod2 : all: f.jumpright "20"
+"Down"  = mod2 : all : f.jumpdown "20"
+
+"i" = mod2 : all : f.jumpup "20"
+"n" = mod2 : all : f.jumpleft "20"
+"o" = mod2 : all: f.jumpright "20"
+"e" = mod2 : all : f.jumpdown "20"
+
+"Right" = mod2 | shift : all : f.changesize "right +10"
+"Left"  = mod2 | shift : all : f.changesize "right -10"
+"Down"  = mod2 | shift : all : f.changesize "bottom +10"
+"Up"    = mod2 | shift : all : f.changesize "bottom -10"
+
+"o" = mod2 | shift : all : f.changesize "right +10"
+"n" = mod2 | shift : all : f.changesize "right -10"
+"e" = mod2 | shift : all : f.changesize "bottom +10"
+"i" = mod2 | shift : all : f.changesize "bottom -10"
+
+### Maximize windows
+"m" = mod2 : all: f.zoom
+"v" = mod2 : all : f.hzoom
+"m" = mod2 | shift:all: f.fullzoom
+
+### Kill a window.
+"x" = mod2 : all: f.delete
+
+### Program shortcuts.
+"Return" = mod2 : all: f.exec "LANG=en_US.UTF-8;urxvt &"
+
+### Restart the wm.
+"r" = mod2: all: f.restart
+
+# Move around.
+"k" = mod2 : all : f.warpring "next"
+"Tab" = mod2 : all : f.warpring "next"
+
+
+### Some useful tools I often start.
+menu "programs"
+{
+    "Programs"	f.title
+    "Lock"      f.exec "slock"
+    "Terminal"  f.exec "urxvt &"
+    "Terminal Gacha"  f.exec "urxvt -fn '-bellcore-gacha-medium-r-normal--16-160-72-72-c-60-iso8859-1' &"
+    "Terminal 9x15" f.exec "urxvt -fn 9x15 &"
+    "Emacs"	f.exec "emacs &"
+    "Firefox"   f.exec "firefox&"
+    "Interface"   f.title
+    "Screens" f.menu "screens"
+    "Keyboards" f.menu "keyboards"
+}
+
+# to add?
+
+#second move/resize speed
+#screen corner and center warping
+#cursor warping?
+
+#f.rightzoom
+#f.leftzoom
+#f.topzoom
+#f.bottomzoom
+
+#f.fill string
+#Where string is either : oqrightcq, oqleftcq, oqtopcq, oqbottomcq or oqverticalcq. The current window is resized in the specified direction until it 
+#reaches an obstacle (either another window, or the screen border). f.fill oqverticalcq sets the window status to oqzoomedcq and toggles, ie calling it 
+#again will reset the previous window size.
