@@ -284,10 +284,13 @@ cl () {
 }
 
 add () {
-    scp $1 ssx:/usr/local/www/saveosx/packages/Darwin/2013Q2/x86_64/All/;
-    ssh ssx 'rm /usr/local/www/saveosx/packages/Darwin/2013Q2/x86_64/All/pkg_summary.gz';
-    ssh ssx '/usr/pkg/sbin/pkg_info -X *.tgz|gzip -9 > /usr/local/www/saveosx/packages/Darwin/2013Q2/x86_64/All/pkg_summary.gz';
-    echo "Package uploaded, I'll update your pkgin";
+	echo "Uploading the package to remote server...";
+    scp $1 ssx:/usr/local/www/saveosx/packages/Darwin/2013Q2/x86_64/All/ 2>/dev/null;
+    echo "Updating the package summary...";
+    ssh ssx 'cd /usr/local/www/saveosx/packages/Darwin/2013Q2/x86_64/All/;
+    		 rm pkg_summary.gz;
+    		 /pkginfo -X *.tgz | gzip -9 > pkg_summary.gz';
+    echo "Package uploaded, I'll update your pkgin...";
     sudo pkgin update;
 }
 
