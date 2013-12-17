@@ -1,22 +1,9 @@
-#!/bin/zsh
-# Color and echo
-# you might need a few scripts/apps found on my github
+#!/bin/sh
 # Created by yrmt.
-           
 e="echo"    
 c0="\033[0m"    # Reset
-c1="\033[0;32m" # Green
-c2="\033[0;33m" # Yellow
-c3="\033[1;31m" # RED
-c4="\033[0;31m" # Red
-c5="\033[0;35m" # Purple
-c6="\033[0;36m" # Blue
+c1="\033[1;31m" # RED
 
-# Term title 
-
-echo -n "\033]0;Info Script\007"
-						
-# OS information
 OS=$(sw_vers|awk -F"\:\t" '{printf "%s ",$2}')
 CPU=$(sysctl -n machdep.cpu.brand_string|awk '{print $1,$2,$3,$4}') 
 RAM=$(sysctl -n hw.memsize|awk '{printf("%d", $1/1e+06)}')
@@ -26,16 +13,16 @@ DISK_USAGE=$(df | awk '/disk0s2/{print$5}')
 PORTS=$(pkg_info|awk 'END {gsub(/\ /, "");print NR}')
 SHELL=$(echo $SHELL)
 
-$e "${c3}OS:     ${c0}$OS"
-$e "${c3}Kernel: ${c0}`uname -rms`"
-$e "${c3}Packs:  ${c0}$PORTS"
-$e "${c3}Shell:  ${c0}$SHELL"
-$e "${c3}Theme:  ${c0}`whoami`"
-$e "${c3}Ram:    ${c0}$RAM MB"
-$e "${c3}Cpu:    ${c0}$CPU"
-$e "${c3}VRam:   ${c0}$VCARD"
-$e "${c3}Model:  ${c0}$MODEL"
-$e "${c3}Disk:   ${c0}$DISK_USAGE"
-$e "${c3}Term:   ${c0}`echo $TERM`"
+$e "${c1}OS:     ${c0}$OS"
+$e "${c1}Kernel: ${c0}`uname -rms`"
+$e "${c1}Packs:  ${c0}$PORTS"
+$e "${c1}Shell:  ${c0}$SHELL"
+$e "${c1}Theme:  ${c0}`whoami`"
+$e "${c1}Ram:    ${c0}$RAM MB"
+$e "${c1}Cpu:    ${c0}$CPU"
+$e "${c1}VRam:   ${c0}$VCARD"
+$e "${c1}Model:  ${c0}$MODEL"
+$e "${c1}Disk:   ${c0}$DISK_USAGE"
+$e "${c1}Term:   ${c0}`echo $TERM`"
 
 #TODO: proper uptime
