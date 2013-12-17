@@ -86,4 +86,3 @@ BEGIN {
     main();
 }
 
-##TODO: proper uptime
