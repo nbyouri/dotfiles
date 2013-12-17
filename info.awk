@@ -81,7 +81,6 @@ function main() {
     printf(r"Terminal:  "n);term();
     printf(r"Uptime:    "n);uptime();
 }
-
 BEGIN {
     main();
 }
