@@ -1,5 +1,6 @@
 #!/bin/zsh
 # Color and echo
+# created my yrmt.
            
 c0="\033[0m"    # Reset
 c1="\033[0;32m" # Green
