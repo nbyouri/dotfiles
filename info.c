@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/sysctl.h>
 #include <sys/statvfs.h>
+#include <sqlite3.h>
 
 #define NOR  "\x1B[0m"
 #define RED  "\x1B[31m"
@@ -19,7 +20,6 @@ static const struct {
     { "kern.hostname", "Hostname" },
     { "SHELL", "Shell" },
     { "TERM", "Terminal" },
-    { "pkgin ls", "Packages" },
     { "system_profiler SPDisplaysDataType", "Graphics" },
 };
 void sysctls(void) {
@@ -47,18 +47,23 @@ void envs(void) {
     }
 }
 void pkg(void) {
-    FILE *fp;
-    static const int BUF = 256;
-    char path[BUF];
-    int count = 0;
-    fp = popen(values[8].ctls, "r");
-    if(!fp) {
-        printf("failed to get package list");
-    } else while(fgets(path, BUF,fp)) {
-        count++;
+    sqlite3 *db;
+    int pkgs;
+    sqlite3_stmt *s;
+    char *sql = "SELECT COUNT (*) FROM LOCAL_PKG";
+
+    if (sqlite3_open("/var/db/pkgin/pkgin.db", &db) != SQLITE_OK) {
+        fprintf(stderr, "cannot open db");
     }
-    printf(RED"%-10s:"NOR" %d\n", values[8].names, count);
-    pclose(fp);
+
+    if (sqlite3_prepare_v2(db, sql, -1, &s, NULL) == SQLITE_OK) {
+        if (sqlite3_step(s) == SQLITE_ERROR) {
+            fprintf(stderr, "error querying db");
+        }
+
+        pkgs = sqlite3_column_int(s,0);
+    }
+    printf(RED"Packages  :"NOR" %d\n", pkgs);
 }
 void gpu(void) {
     FILE *fp;
@@ -83,8 +88,11 @@ void disk(void) {
     if (-1 == statvfs("/", &info))
         printf("failed to get disk info");
     else {
-        printf(RED"Disk avail:"NOR" %.2f GB\n", 
-                ((info.f_bavail * info.f_frsize) / 1024e+06));
+        unsigned long left  = (info.f_bavail * info.f_frsize);
+        unsigned long total = (info.f_files * info.f_frsize);
+        unsigned long used  = total - left;
+        float perc  = (float)used / (float)total;
+        printf(RED"Disk usage:"NOR" %.2f%%\n", perc * 100);
     }
 }
 static void print_uptime(time_t *nowp)
@@ -133,5 +141,5 @@ int main(void) {
     disk();
     pkg();
     print_uptime(&now);
-    gpu();
+    //gpu();
 }
