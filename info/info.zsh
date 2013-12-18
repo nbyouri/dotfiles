@@ -17,6 +17,7 @@ CPU=$(sysctl -n machdep.cpu.brand_string)
 MODEL=$(sysctl -n hw.model) 
 DISK_USAGE=$(df | awk '/disk0s2/{print$5}')
 PACKAGES=$(pkg_info|awk 'END {gsub(/\ /, "");print NR}')
+UPTIME=$(uptime|awk -F"\,\ " '{print $1}')
 # Printing the apple
 
 echo -e "${c1}                :++++.         "   "${c3}`users`${c5}@${c3}`hostname`"
