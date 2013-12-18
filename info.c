@@ -58,6 +58,7 @@ void pkg(void) {
         count++;
     }
     printf(RED"%-10s:"NOR" %d\n", values[8].names, count);
+    pclose(fp);
 }
 void gpu(void) {
     FILE *fp;
