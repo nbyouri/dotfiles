@@ -77,9 +77,18 @@ void gpu(void) {
     }
     pclose(fp);
 }
+void disk(void) {
+  struct statvfs info;
+  if (-1 == statvfs("/", &info))
+    printf("failed to get disk info");
+  else {
+    printf(RED"Total     :"NOR" %.2f GB\n", ((info.f_bavail * info.f_frsize) / 1024e+06));
+  }
+}
 int main(void) {
     sysctls();
     envs();
+    disk();
     pkg();
     gpu();
 }
