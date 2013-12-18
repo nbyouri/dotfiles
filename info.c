@@ -78,17 +78,59 @@ void gpu(void) {
     pclose(fp);
 }
 void disk(void) {
-  struct statvfs info;
-  if (-1 == statvfs("/", &info))
-    printf("failed to get disk info");
-  else {
-    printf(RED"Total     :"NOR" %.2f GB\n", ((info.f_bavail * info.f_frsize) / 1024e+06));
-  }
+    struct statvfs info;
+    if (-1 == statvfs("/", &info))
+        printf("failed to get disk info");
+    else {
+        printf(RED"Disk avail:"NOR" %.2f GB\n", 
+                ((info.f_bavail * info.f_frsize) / 1024e+06));
+    }
+}
+static void print_uptime(time_t *nowp)
+{
+    struct timeval boottime;
+    time_t uptime;
+    int days, hrs, mins, secs;
+    int mib[2];
+    size_t size;
+    char buf[256];
+
+    if (strftime(buf, sizeof(buf), NULL, localtime(nowp)) != 0)
+        mib[0] = CTL_KERN;
+    mib[1] = KERN_BOOTTIME;
+    size = sizeof(boottime);
+    if (sysctl(mib, 2, &boottime, &size, NULL, 0) != -1 && 
+            boottime.tv_sec != 0) {
+        uptime = *nowp - boottime.tv_sec;
+        if (uptime > 60)
+            uptime += 30;
+        days = uptime / 86400;
+        uptime %= 86400;
+        hrs = uptime / 3600;
+        uptime %= 3600;
+        mins = uptime / 60;
+        secs = uptime % 60;
+        printf(RED"Uptime    :"NOR);
+        if (days > 0)
+            (void)printf("%d day%s", days, days > 1 ? "s" : "");
+        if (hrs > 0 && mins > 0)
+            (void)printf("%2d:%02d", hrs, mins);
+        else if (hrs > 0)
+            (void)printf("%d hr%s", hrs, hrs > 1 ? "s" : "");
+        else if (mins > 0)
+            (void)printf("%d min%s", mins, mins > 1 ? "s" : "");
+        else
+            (void)printf("%d sec%s", secs, secs > 1 ? "s" : "");
+        printf("\n");
+    }
 }
 int main(void) {
+    time_t now;
+    (void)time(&now);
     sysctls();
     envs();
     disk();
     pkg();
+    print_uptime(&now);
     gpu();
 }
