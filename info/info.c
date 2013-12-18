@@ -20,7 +20,6 @@ static const struct {
     { "kern.hostname", "Hostname" },
     { "SHELL", "Shell" },
     { "TERM", "Terminal" },
-    { "system_profiler SPDisplaysDataType", "Graphics" },
 };
 void sysctls(void) {
     size_t len;
@@ -64,24 +63,6 @@ void pkg(void) {
         pkgs = sqlite3_column_int(s,0);
     }
     printf(RED"Packages  :"NOR" %d\n", pkgs);
-}
-void gpu(void) {
-    FILE *fp;
-    char path[256];
-    fp = popen(values[9].ctls, "r");
-    if(!fp) {
-        printf("failed to get gpu info");
-    } else while(fgets(path,sizeof(path), fp)) {
-        if(strstr(path,"Chipset")) {
-            char *type = path + 21;
-            type[strlen(type)-1] = '\0';
-            printf(RED"%-10s:"NOR" %s @ ", values[9].names, type);
-        } else if(strstr(path, "VRAM")) {
-            char *type = path + 20;
-            printf("%s", type);
-        }
-    }
-    pclose(fp);
 }
 void disk(void) {
     struct statvfs info;
@@ -141,5 +122,4 @@ int main(void) {
     disk();
     pkg();
     print_uptime(&now);
-    //gpu();
 }
