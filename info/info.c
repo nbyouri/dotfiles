@@ -67,6 +67,7 @@ void pkg(void) {
 
         pkgs = sqlite3_column_int(s,0);
     }
+    sqlite3_close(db);
     printf(RED"Packages  :"NOR" %d\n", pkgs);
 }
 void disk(void) {
