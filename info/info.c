@@ -106,7 +106,7 @@ static void print_uptime(time_t *nowp)
         uptime %= 3600;
         mins = uptime / 60;
         secs = uptime % 60;
-        printf(RED"Uptime    :"NOR);
+        printf(RED"Uptime    : "NOR);
         if (days > 0)
             (void)printf("%d day%s", days, days > 1 ? "s" : "");
         if (hrs > 0 && mins > 0)
