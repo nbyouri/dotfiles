@@ -92,7 +92,6 @@ static void gpu(void)
                                 kCFAllocatorDefault, kIORegistryIterateRecursively); 
                         //As it could be in a child
                     }
-
                     if (VRAMSize) {
                         mach_vm_size_t Size = 0;
                         CFTypeID Type = CFGetTypeID(VRAMSize);
@@ -103,7 +102,7 @@ static void gpu(void)
                         else if (Type == CFNumberGetTypeID()) CFNumberGetValue(VRAMSize,
                                 kCFNumberSInt64Type, &Size);
                         if (ValueInBytes) Size >>= 20;
-                        printf(RED"Graphics  : "NOR"%s @ %lluMB\n", CFDataGetBytePtr(Model),Size);
+                        printf(RED"Graphics  : "NOR"%s @ %llu MB\n", CFDataGetBytePtr(Model),Size);
                         CFRelease(Model);
                     }
                     else printf("%s : Unknown VRAM Size\n", CFDataGetBytePtr(Model));
@@ -155,11 +154,9 @@ static void pkg(void) {
     int pkgs;
     sqlite3_stmt *s;
     char *sql = "SELECT COUNT (*) FROM LOCAL_PKG";
-
     if (sqlite3_open("/var/db/pkgin/pkgin.db", &db) != SQLITE_OK) {
         fprintf(stderr, "cannot open db");
     }
-
     if (sqlite3_prepare_v2(db, sql, -1, &s, NULL) == SQLITE_OK) {
         if (sqlite3_step(s) == SQLITE_ERROR) {
             fprintf(stderr, "error querying db");
@@ -179,7 +176,7 @@ static void disk(void) {
         unsigned long total = (info.f_files * info.f_frsize);
         unsigned long used  = total - left;
         float perc  = (float)used / (float)total;
-        printf(RED"Disk usage:"NOR" %.2f%%\n", perc * 100);
+        printf(RED"Disk usage:"NOR" %.2f%% of %.2f GB\n", perc * 100, (float)(total/1e+09));
     }
 }
 static void uptime(time_t *nowp)
@@ -190,7 +187,6 @@ static void uptime(time_t *nowp)
     int mib[2];
     size_t size;
     char buf[256];
-
     if (strftime(buf, sizeof(buf), NULL, localtime(nowp)) != 0)
         mib[0] = CTL_KERN;
     mib[1] = KERN_BOOTTIME;
