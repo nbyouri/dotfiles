@@ -102,7 +102,8 @@ static void gpu(void)
                         else if (Type == CFNumberGetTypeID()) CFNumberGetValue(VRAMSize,
                                 kCFNumberSInt64Type, &Size);
                         if (ValueInBytes) Size >>= 20;
-                        printf(RED"Graphics  : "NOR"%s @ %llu MB\n", CFDataGetBytePtr(Model),Size);
+                        printf(RED"Graphics  : "NOR"%s @ %llu MB\n", 
+                                CFDataGetBytePtr(Model),Size);
                         CFRelease(Model);
                     }
                     else printf("%s : Unknown VRAM Size\n", CFDataGetBytePtr(Model));
@@ -176,7 +177,8 @@ static void disk(void) {
         unsigned long total = (info.f_files * info.f_frsize);
         unsigned long used  = total - left;
         float perc  = (float)used / (float)total;
-        printf(RED"Disk usage:"NOR" %.2f%% of %.2f GB\n", perc * 100, (float)(total/1e+09));
+        printf(RED"Disk usage:"NOR" %.2f%% of %.2f GB\n", 
+                perc * 100, (float)(total / 1e+09));
     }
 }
 static void uptime(time_t *nowp)
