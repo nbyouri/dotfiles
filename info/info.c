@@ -41,7 +41,7 @@ static void sysctls(int i);
 static void envs(int i);
 static void disk(void);
 static void pkg(void);
-static void print_uptime(time_t *nowp);
+static void uptime(time_t *nowp);
 static void gpu(void);
 
 static void print_apple(void) {
@@ -58,7 +58,7 @@ static void print_apple(void) {
     printf(C4" /sssssssssssssssssssssss.    ");sysctls(1);
     printf(C4" :ssssssssssssssssssssssss-   ");disk();
     printf(C5"  osssssssssssssssssssssssso/ ");pkg();
-    printf(C5"  `syyyyyyyyyyyyyyyyyyyyyyyy+ ");print_uptime(&now);
+    printf(C5"  `syyyyyyyyyyyyyyyyyyyyyyyy+ ");uptime(&now);
     printf(C5"   `ossssssssssssssssssssss/  ");gpu();
     printf(C6"     :ooooooooooooooooooo+.   \n");
     printf(C6"      `:+oo+/:-..-:/+o+/-     \n");
@@ -197,7 +197,7 @@ static void disk(void) {
         printf(RED"Disk usage:"NOR" %.2f%%\n", perc * 100);
     }
 }
-static void print_uptime(time_t *nowp)
+static void uptime(time_t *nowp)
 {
     struct timeval boottime;
     time_t uptime;
@@ -264,7 +264,7 @@ int main(int argc, char **argv) {
         envs(3);
         disk();
         pkg();
-        print_uptime(&now);
+        uptime(&now);
         gpu();
     }
     return 0;
