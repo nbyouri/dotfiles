@@ -12,6 +12,8 @@
 #include <sys/sysctl.h>
 #include <sys/statvfs.h>
 #include <sqlite3.h>
+#include <CoreFoundation/CoreFoundation.h>
+#include <IOKit/IOKitLib.h>
 
 #define C0  "\x1B[0m"    //Reset
 #define C1  "\x1B[0;32m" //Green
@@ -40,6 +42,7 @@ static void envs(int i);
 static void disk(void);
 static void pkg(void);
 static void print_uptime(time_t *nowp);
+static void gpu(void);
 
 static void print_apple(void) {
     time_t now;
@@ -56,9 +59,75 @@ static void print_apple(void) {
     printf(C4" :ssssssssssssssssssssssss-   ");disk();
     printf(C5"  osssssssssssssssssssssssso/ ");pkg();
     printf(C5"  `syyyyyyyyyyyyyyyyyyyyyyyy+ ");print_uptime(&now);
-    printf(C5"   `ossssssssssssssssssssss/  \n");
+    printf(C5"   `ossssssssssssssssssssss/  ");gpu();
     printf(C6"     :ooooooooooooooooooo+.   \n");
     printf(C6"      `:+oo+/:-..-:/+o+/-     \n");
+}
+static void gpu(void)
+    // Thank you bottomy(ScrimpyCat) for this.
+{
+    io_iterator_t Iterator;
+    kern_return_t err = IOServiceGetMatchingServices(kIOMasterPortDefault, 
+            IOServiceMatching("IOPCIDevice"), &Iterator);
+    if (err != KERN_SUCCESS)
+    {
+        fprintf(stderr, "IOServiceGetMatchingServices failed: %u\n", err);
+    }
+
+    for (io_service_t Device; IOIteratorIsValid(Iterator) && 
+            (Device = IOIteratorNext(Iterator)); IOObjectRelease(Device))
+    {
+        CFStringRef Name = IORegistryEntrySearchCFProperty(Device, kIOServicePlane, 
+                CFSTR("IOName"), kCFAllocatorDefault, kNilOptions);
+        if (Name)
+        {
+            if (CFStringCompare(Name, CFSTR("display"), 0) == kCFCompareEqualTo)
+            {
+                CFDataRef Model = IORegistryEntrySearchCFProperty(Device, 
+                        kIOServicePlane, CFSTR("model"), kCFAllocatorDefault, kNilOptions);
+                if (Model)
+                {
+                    _Bool ValueInBytes = TRUE;
+                    CFTypeRef VRAMSize = IORegistryEntrySearchCFProperty(Device, 
+                            kIOServicePlane, CFSTR("VRAM,totalsize"), kCFAllocatorDefault, 
+                            kIORegistryIterateRecursively); //As it could be in a child
+                    if (!VRAMSize)
+                    {
+                        ValueInBytes = FALSE;
+                        VRAMSize = IORegistryEntrySearchCFProperty(Device, 
+                                kIOServicePlane, CFSTR("VRAM,totalMB"),
+                                kCFAllocatorDefault, kIORegistryIterateRecursively); 
+                        //As it could be in a child
+                    }
+
+                    if (VRAMSize)
+                    {
+                        mach_vm_size_t Size = 0;
+                        CFTypeID Type = CFGetTypeID(VRAMSize);
+                        if (Type == CFDataGetTypeID()) Size = (CFDataGetLength(VRAMSize)
+                                == sizeof(uint32_t) ? (mach_vm_size_t)*
+                                (const uint32_t*)CFDataGetBytePtr(VRAMSize)
+                                : *(const uint64_t*)CFDataGetBytePtr(VRAMSize));
+                        else if (Type == CFNumberGetTypeID()) CFNumberGetValue(VRAMSize,
+                                kCFNumberSInt64Type, &Size);
+
+                        if (ValueInBytes) Size >>= 20;
+
+                        printf(RED"Graphics  : "NOR"%s @ %lluMB\n", CFDataGetBytePtr(Model),Size);
+
+                        CFRelease(Model);
+                    }
+
+                    else printf("%s : Unknown VRAM Size\n", CFDataGetBytePtr(Model));
+
+
+                    CFRelease(Model);
+                }
+            }
+
+            CFRelease(Name);
+        }
+    }
 }
 void help(void) {
     printf("Mac OS X Info script by yrmt dec. 2013\n"
@@ -96,6 +165,7 @@ static void envs(int i) {
     }
 }
 static void pkg(void) {
+    // Thank you dcat for this.
     sqlite3 *db;
     int pkgs;
     sqlite3_stmt *s;
@@ -195,6 +265,7 @@ int main(int argc, char **argv) {
         disk();
         pkg();
         print_uptime(&now);
+        gpu();
     }
     return 0;
 }
