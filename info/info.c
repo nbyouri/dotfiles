@@ -45,7 +45,7 @@ static void print_uptime(time_t *nowp);
 
 static void print_apple(void) {
     time_t now;
-    (void)time(&now);
+    time(&now);
     printf(C1"                :++++.        ");envs(3);
     printf(C1"               /+++/.         ");sysctls(0);
     printf(C1"       .:-::- .+/:-``.::-     ");sysctls(3); 
@@ -155,15 +155,15 @@ static void print_uptime(time_t *nowp)
         secs = uptime % 60;
         printf(RED"Uptime    : "NOR);
         if (days > 0)
-            (void)printf("%d day %s", days, days > 1 ? "s" : "");
+            printf("%d day %s", days, days > 1 ? "s" : "");
         if (hrs > 0 && mins > 0)
-            (void)printf("%2d:%02d", hrs, mins);
+            printf("%2d:%02d", hrs, mins);
         else if (hrs > 0)
-            (void)printf("%d hr%s", hrs, hrs > 1 ? "s" : "");
+            printf("%d hr%s", hrs, hrs > 1 ? "s" : "");
         else if (mins > 0)
-            (void)printf("%d min%s", mins, mins > 1 ? "s" : "");
+            printf("%d min%s", mins, mins > 1 ? "s" : "");
         else
-            (void)printf("%d sec%s", secs, secs > 1 ? "s" : "");
+            printf("%d sec%s", secs, secs > 1 ? "s" : "");
         printf("\n");
     }
 }
@@ -188,7 +188,7 @@ int main(int argc, char **argv) {
         print_apple();
     } else {
         time_t now;
-        (void)time(&now);
+        time(&now);
         for (int i=5;i>-1;i--) {
             sysctls(i);
         }
