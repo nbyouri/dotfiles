@@ -72,6 +72,7 @@ static void sysctls(int i) {
     size_t len;
     uint64_t value64;
     if(i == 2) {
+        len = sizeof(value64);
         sysctlbyname(values[2].ctls, &value64, &len, NULL, 0);
         printf(RED"%-10s: "NOR"%.f MB\n", values[2].names, value64/1e+06);
     } else {
