@@ -166,9 +166,9 @@ static void print_uptime(time_t *nowp)
     }
 }
 int main(int argc, char **argv) {
-    char c;
     bool print_with_apple = false;
     if (argc >= 2) {
+        char c;
         while((c = getopt(argc, argv, "ha")) != -1) {
             switch(c) {
                 case 'a':
@@ -196,4 +196,5 @@ int main(int argc, char **argv) {
         pkg();
         print_uptime(&now);
     }
+    return 0;
 }
