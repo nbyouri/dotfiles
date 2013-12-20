@@ -69,30 +69,23 @@ static void gpu(void)
     io_iterator_t Iterator;
     kern_return_t err = IOServiceGetMatchingServices(kIOMasterPortDefault, 
             IOServiceMatching("IOPCIDevice"), &Iterator);
-    if (err != KERN_SUCCESS)
-    {
+    if (err != KERN_SUCCESS) {
         fprintf(stderr, "IOServiceGetMatchingServices failed: %u\n", err);
     }
-
     for (io_service_t Device; IOIteratorIsValid(Iterator) && 
-            (Device = IOIteratorNext(Iterator)); IOObjectRelease(Device))
-    {
+            (Device = IOIteratorNext(Iterator)); IOObjectRelease(Device)) {
         CFStringRef Name = IORegistryEntrySearchCFProperty(Device, kIOServicePlane, 
                 CFSTR("IOName"), kCFAllocatorDefault, kNilOptions);
-        if (Name)
-        {
-            if (CFStringCompare(Name, CFSTR("display"), 0) == kCFCompareEqualTo)
-            {
+        if (Name) {
+            if (CFStringCompare(Name, CFSTR("display"), 0) == kCFCompareEqualTo) {
                 CFDataRef Model = IORegistryEntrySearchCFProperty(Device, 
                         kIOServicePlane, CFSTR("model"), kCFAllocatorDefault, kNilOptions);
-                if (Model)
-                {
+                if (Model) {
                     _Bool ValueInBytes = TRUE;
                     CFTypeRef VRAMSize = IORegistryEntrySearchCFProperty(Device, 
                             kIOServicePlane, CFSTR("VRAM,totalsize"), kCFAllocatorDefault, 
                             kIORegistryIterateRecursively); //As it could be in a child
-                    if (!VRAMSize)
-                    {
+                    if (!VRAMSize) {
                         ValueInBytes = FALSE;
                         VRAMSize = IORegistryEntrySearchCFProperty(Device, 
                                 kIOServicePlane, CFSTR("VRAM,totalMB"),
@@ -100,8 +93,7 @@ static void gpu(void)
                         //As it could be in a child
                     }
 
-                    if (VRAMSize)
-                    {
+                    if (VRAMSize) {
                         mach_vm_size_t Size = 0;
                         CFTypeID Type = CFGetTypeID(VRAMSize);
                         if (Type == CFDataGetTypeID()) Size = (CFDataGetLength(VRAMSize)
@@ -110,21 +102,14 @@ static void gpu(void)
                                 : *(const uint64_t*)CFDataGetBytePtr(VRAMSize));
                         else if (Type == CFNumberGetTypeID()) CFNumberGetValue(VRAMSize,
                                 kCFNumberSInt64Type, &Size);
-
                         if (ValueInBytes) Size >>= 20;
-
                         printf(RED"Graphics  : "NOR"%s @ %lluMB\n", CFDataGetBytePtr(Model),Size);
-
                         CFRelease(Model);
                     }
-
                     else printf("%s : Unknown VRAM Size\n", CFDataGetBytePtr(Model));
-
-
                     CFRelease(Model);
                 }
             }
-
             CFRelease(Name);
         }
     }
