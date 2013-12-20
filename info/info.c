@@ -23,8 +23,6 @@
 #define RED C3
 #define NOR C0
 
-bool print_with_apple = false;
-
 static const struct {
     const char *ctls;
     const char *names;
@@ -169,15 +167,14 @@ static void print_uptime(time_t *nowp)
 }
 int main(int argc, char **argv) {
     char c;
+    bool print_with_apple = false;
     if (argc >= 2) {
         while((c = getopt(argc, argv, "ha")) != -1) {
             switch(c) {
-                case 'h':
-                    help();
-                    break;
                 case 'a':
                     print_with_apple = true;
                     break;
+                case 'h':
                 default:
                     help();
                     break;
