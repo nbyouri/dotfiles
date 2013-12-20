@@ -66,7 +66,7 @@ void help(void) {
     printf("Mac OS X Info script by yrmt dec. 2013\n"
             "\t-a shows a colored apple\n"
             "\t-h shows this help msg\n");
-    exit(1);
+    exit(0);
 }
 static void sysctls(int i) {
     size_t len;
