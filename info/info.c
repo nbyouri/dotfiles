@@ -106,7 +106,7 @@ static void gpu(void) // Thank you bottomy(ScrimpyCat) for this.
                         CFTypeID Type = CFGetTypeID(VRAM);
                         if(Type==CFDataGetTypeID())
                             Size=(CFDataGetLength(VRAM) == sizeof(uint32_t) ?
-                                    (mach_vm_size_t)*(const uint32_t*)CFDataGetBytePtr(VRAM):
+                    (mach_vm_size_t)*(const uint32_t*)CFDataGetBytePtr(VRAM):
                                     *(const uint64_t*)CFDataGetBytePtr(VRAM));
                         else if(Type == CFNumberGetTypeID())
                             CFNumberGetValue(VRAM,
@@ -116,7 +116,7 @@ static void gpu(void) // Thank you bottomy(ScrimpyCat) for this.
                                 CFDataGetBytePtr(Model),Size);
                         CFRelease(Model);
                     }
-                    else printf("%s : Unknown VRAM Size\n",
+                    else printf(RED"Graphic  : "NOR"%s @ Unknown VRAM Size\n",
                             CFDataGetBytePtr(Model));
                     CFRelease(Model);
                 }
@@ -177,9 +177,7 @@ static void pkg(void) { // Thank you dcat for this.
 }
 static void disk(void) {
     struct statvfs info;
-    if(-1 == statvfs("/", &info))
-        printf("failed to get disk info\n");
-    else {
+    if(!statvfs("/", &info)) {
         unsigned long left  = (info.f_bavail * info.f_frsize);
         unsigned long total = (info.f_files * info.f_frsize);
         unsigned long used  = total - left;
