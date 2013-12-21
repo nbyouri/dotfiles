@@ -106,7 +106,7 @@ static void gpu(void) // Thank you bottomy(ScrimpyCat) for this.
                         CFTypeID Type = CFGetTypeID(VRAM);
                         if(Type==CFDataGetTypeID())
                             Size=(CFDataGetLength(VRAM) == sizeof(uint32_t) ?
-                    (mach_vm_size_t)*(const uint32_t*)CFDataGetBytePtr(VRAM):
+                                    (mach_vm_size_t)*(const uint32_t*)CFDataGetBytePtr(VRAM):
                                     *(const uint64_t*)CFDataGetBytePtr(VRAM));
                         else if(Type == CFNumberGetTypeID())
                             CFNumberGetValue(VRAM,
@@ -165,15 +165,12 @@ static void pkg(void) { // Thank you dcat for this.
     int pkgs = 0;
     sqlite3_stmt *s;
     char *sql = "SELECT COUNT (*) FROM LOCAL_PKG";
-    if(sqlite3_open("/var/db/pkgin/pkgin.db", &db) != SQLITE_OK) {
-        fprintf(stderr, "cannot open db");
-    }
-    if(sqlite3_prepare_v2(db, sql, -1, &s, NULL) == SQLITE_OK) {
-        if(sqlite3_step(s) == SQLITE_ERROR) {
-            fprintf(stderr, "error querying db");
+    if(sqlite3_open("/var/db/pkgin/pkgin.db", &db) == SQLITE_OK) {
+        if(sqlite3_prepare_v2(db, sql, -1, &s, NULL) == SQLITE_OK) {
+            if(sqlite3_step(s) != SQLITE_ERROR) {
+                pkgs = sqlite3_column_int(s,0);
+            }
         }
-
-        pkgs = sqlite3_column_int(s,0);
     }
     sqlite3_close(db);
     printf(RED"Packages  : "NOR"%d\n", pkgs);
@@ -181,7 +178,7 @@ static void pkg(void) { // Thank you dcat for this.
 static void disk(void) {
     struct statvfs info;
     if(-1 == statvfs("/", &info))
-        printf("failed to get disk info");
+        printf("failed to get disk info\n");
     else {
         unsigned long left  = (info.f_bavail * info.f_frsize);
         unsigned long total = (info.f_files * info.f_frsize);
