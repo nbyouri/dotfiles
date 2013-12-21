@@ -206,15 +206,15 @@ static void uptime(time_t *nowp)
         secs = uptime % 60;
         printf(RED"Uptime    : "NOR);
         if (days > 0)
-            printf("%d day %s", days, days > 1 ? "s" : "");
+            printf("%d day%s", days, days > 1 ? "s " : " ");
         if (hrs > 0 && mins > 0)
             printf("%2d:%02d", hrs, mins);
         else if (hrs > 0)
-            printf("%d hr%s", hrs, hrs > 1 ? "s" : "");
+            printf("%d hr%s", hrs, hrs > 1 ? "s " : " ");
         else if (mins > 0)
-            printf("%d min%s", mins, mins > 1 ? "s" : "");
+            printf("%d min%s", mins, mins > 1 ? "s " : " ");
         else
-            printf("%d sec%s", secs, secs > 1 ? "s" : "");
+            printf("%d sec%s", secs, secs > 1 ? "s " : " ");
         printf("\n");
     }
 }
