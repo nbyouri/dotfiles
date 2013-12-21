@@ -1,6 +1,6 @@
-/* 
+/*
  *
- *  Created by yrmt 
+ *  Created by yrmt
  *
  */
 #include <stdio.h>
@@ -49,7 +49,7 @@ static void print_apple(void) {
     time(&now);
     printf(C1"                :++++.        ");envs(3);
     printf(C1"               /+++/.         ");sysctls(0);
-    printf(C1"       .:-::- .+/:-``.::-     ");sysctls(3); 
+    printf(C1"       .:-::- .+/:-``.::-     ");sysctls(3);
     printf(C2"    .:/++++++/::::/++++++/:`  ");sysctls(4);
     printf(C2"  .:///////////////////////:` ");sysctls(5);
     printf(C2"  ////////////////////////`   ");sysctls(2);
@@ -64,46 +64,46 @@ static void print_apple(void) {
     printf(C6"      `:+oo+/:-..-:/+o+/-     \n");
 }
 static void gpu(void)
-    // Thank you bottomy(ScrimpyCat) for this.
+// Thank you bottomy(ScrimpyCat) for this.
 {
     io_iterator_t Iterator;
-    kern_return_t err = IOServiceGetMatchingServices(kIOMasterPortDefault, 
-            IOServiceMatching("IOPCIDevice"), &Iterator);
+    kern_return_t err = IOServiceGetMatchingServices(kIOMasterPortDefault,
+                                                     IOServiceMatching("IOPCIDevice"), &Iterator);
     if (err != KERN_SUCCESS) {
         fprintf(stderr, "IOServiceGetMatchingServices failed: %u\n", err);
     }
-    for (io_service_t Device; IOIteratorIsValid(Iterator) && 
-            (Device = IOIteratorNext(Iterator)); IOObjectRelease(Device)) {
-        CFStringRef Name = IORegistryEntrySearchCFProperty(Device, kIOServicePlane, 
-                CFSTR("IOName"), kCFAllocatorDefault, kNilOptions);
+    for (io_service_t Device; IOIteratorIsValid(Iterator) &&
+         (Device = IOIteratorNext(Iterator)); IOObjectRelease(Device)) {
+        CFStringRef Name = IORegistryEntrySearchCFProperty(Device, kIOServicePlane,
+                                                           CFSTR("IOName"), kCFAllocatorDefault, kNilOptions);
         if (Name) {
             if (CFStringCompare(Name, CFSTR("display"), 0) == kCFCompareEqualTo) {
-                CFDataRef Model = IORegistryEntrySearchCFProperty(Device, 
-                        kIOServicePlane, CFSTR("model"), kCFAllocatorDefault, kNilOptions);
+                CFDataRef Model = IORegistryEntrySearchCFProperty(Device,
+                                                                  kIOServicePlane, CFSTR("model"), kCFAllocatorDefault, kNilOptions);
                 if (Model) {
                     _Bool ValueInBytes = TRUE;
-                    CFTypeRef VRAMSize = IORegistryEntrySearchCFProperty(Device, 
-                            kIOServicePlane, CFSTR("VRAM,totalsize"), kCFAllocatorDefault, 
-                            kIORegistryIterateRecursively); //As it could be in a child
+                    CFTypeRef VRAMSize = IORegistryEntrySearchCFProperty(Device,
+                                                                         kIOServicePlane, CFSTR("VRAM,totalsize"), kCFAllocatorDefault,
+                                                                         kIORegistryIterateRecursively); //As it could be in a child
                     if (!VRAMSize) {
                         ValueInBytes = FALSE;
-                        VRAMSize = IORegistryEntrySearchCFProperty(Device, 
-                                kIOServicePlane, CFSTR("VRAM,totalMB"),
-                                kCFAllocatorDefault, kIORegistryIterateRecursively); 
+                        VRAMSize = IORegistryEntrySearchCFProperty(Device,
+                                                                   kIOServicePlane, CFSTR("VRAM,totalMB"),
+                                                                   kCFAllocatorDefault, kIORegistryIterateRecursively);
                         //As it could be in a child
                     }
                     if (VRAMSize) {
                         mach_vm_size_t Size = 0;
                         CFTypeID Type = CFGetTypeID(VRAMSize);
                         if (Type == CFDataGetTypeID()) Size = (CFDataGetLength(VRAMSize)
-                                == sizeof(uint32_t) ? (mach_vm_size_t)*
-                                (const uint32_t*)CFDataGetBytePtr(VRAMSize)
-                                : *(const uint64_t*)CFDataGetBytePtr(VRAMSize));
+                                                               == sizeof(uint32_t) ? (mach_vm_size_t)*
+                                                               (const uint32_t*)CFDataGetBytePtr(VRAMSize)
+                                                               : *(const uint64_t*)CFDataGetBytePtr(VRAMSize));
                         else if (Type == CFNumberGetTypeID()) CFNumberGetValue(VRAMSize,
-                                kCFNumberSInt64Type, &Size);
+                                                                               kCFNumberSInt64Type, &Size);
                         if (ValueInBytes) Size >>= 20;
-                        printf(RED"Graphics  : "NOR"%s @ %llu MB\n", 
-                                CFDataGetBytePtr(Model),Size);
+                        printf(RED"Graphics  : "NOR"%s @ %llu MB\n",
+                               CFDataGetBytePtr(Model),Size);
                         CFRelease(Model);
                     }
                     else printf("%s : Unknown VRAM Size\n", CFDataGetBytePtr(Model));
@@ -116,8 +116,8 @@ static void gpu(void)
 }
 void help(void) {
     printf("Mac OS X Info script by yrmt dec. 2013\n"
-            "\t-a shows a colored apple\n"
-            "\t-h shows this help msg\n");
+           "\t-a shows a colored apple\n"
+           "\t-h shows this help msg\n");
     exit(0);
 }
 static void sysctls(int i) {
@@ -152,7 +152,7 @@ static void envs(int i) {
 static void pkg(void) {
     // Thank you dcat for this.
     sqlite3 *db;
-    int pkgs;
+    int pkgs = 0;
     sqlite3_stmt *s;
     char *sql = "SELECT COUNT (*) FROM LOCAL_PKG";
     if (sqlite3_open("/var/db/pkgin/pkgin.db", &db) != SQLITE_OK) {
@@ -162,7 +162,7 @@ static void pkg(void) {
         if (sqlite3_step(s) == SQLITE_ERROR) {
             fprintf(stderr, "error querying db");
         }
-
+        
         pkgs = sqlite3_column_int(s,0);
     }
     sqlite3_close(db);
@@ -177,8 +177,8 @@ static void disk(void) {
         unsigned long total = (info.f_files * info.f_frsize);
         unsigned long used  = total - left;
         float perc  = (float)used / (float)total;
-        printf(RED"Disk usage:"NOR" %.2f%% of %.2f GB\n", 
-                perc * 100, (float)(total / 1e+09));
+        printf(RED"Disk usage:"NOR" %.2f%% of %.2f GB\n",
+               perc * 100, (float)total / 1e+09);
     }
 }
 static void uptime(time_t *nowp)
@@ -193,16 +193,16 @@ static void uptime(time_t *nowp)
         mib[0] = CTL_KERN;
     mib[1] = KERN_BOOTTIME;
     size = sizeof(boottime);
-    if (sysctl(mib, 2, &boottime, &size, NULL, 0) != -1 && 
-            boottime.tv_sec != 0) {
+    if (sysctl(mib, 2, &boottime, &size, NULL, 0) != -1 &&
+        boottime.tv_sec != 0) {
         uptime = *nowp - boottime.tv_sec;
         if (uptime > 60)
             uptime += 30;
-        days = uptime / 86400;
+        days = (int)uptime / 86400;
         uptime %= 86400;
-        hrs = uptime / 3600;
+        hrs = (int)uptime / 3600;
         uptime %= 3600;
-        mins = uptime / 60;
+        mins = (int)uptime / 60;
         secs = uptime % 60;
         printf(RED"Uptime    : "NOR);
         if (days > 0)
