@@ -194,12 +194,12 @@ static void uptime(time_t *nowp)
     int mib[2];
     size_t size;
     char buf[256];
-    if(strftime(buf, sizeof(buf), NULL, localtime(nowp)) != 0)
+    if(strftime(buf, sizeof(buf), NULL, localtime(nowp)))
         mib[0] = CTL_KERN;
     mib[1] = KERN_BOOTTIME;
     size = sizeof(boottime);
     if(sysctl(mib, 2, &boottime, &size, NULL, 0) != -1 &&
-            boottime.tv_sec != 0) {
+            boottime.tv_sec) {
         uptime = *nowp - boottime.tv_sec;
         if(uptime > 60)
             uptime += 30;
