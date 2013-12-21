@@ -104,10 +104,10 @@ static void gpu(void) // Thank you bottomy(ScrimpyCat) for this.
                     if(VRAM) {
                         mach_vm_size_t Size = 0;
                         CFTypeID Type = CFGetTypeID(VRAM);
-                        if(Type==CFDataGetTypeID()) Size=(CFDataGetLength(VRAM)
-                                == sizeof(uint32_t) ? (mach_vm_size_t)*
-                                (const uint32_t*)CFDataGetBytePtr(VRAM)
-                                : *(const uint64_t*)CFDataGetBytePtr(VRAM));
+                        if(Type==CFDataGetTypeID())
+                            Size=(CFDataGetLength(VRAM) == sizeof(uint32_t) ?
+                    (mach_vm_size_t)*(const uint32_t*)CFDataGetBytePtr(VRAM):
+                                    *(const uint64_t*)CFDataGetBytePtr(VRAM));
                         else if(Type == CFNumberGetTypeID())
                             CFNumberGetValue(VRAM,
                                     kCFNumberSInt64Type, &Size);
