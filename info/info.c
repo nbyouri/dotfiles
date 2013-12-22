@@ -12,6 +12,7 @@
 #include <sys/sysctl.h>
 #include <sys/statvfs.h>
 #include <sqlite3.h>
+#include <mach/mach.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
 
@@ -43,6 +44,7 @@ static void disk(void);
 static void pkg(void);
 static void uptime(time_t *nowp);
 static void gpu(void);
+static void mem(void);
 
 static void print_apple(void) {
     time_t now;
@@ -52,7 +54,7 @@ static void print_apple(void) {
     printf(C1"       .:-::- .+/:-``.::-     ");sysctls(3);
     printf(C2"    .:/++++++/::::/++++++/:`  ");sysctls(4);
     printf(C2"  .:///////////////////////:` ");sysctls(5);
-    printf(C2"  ////////////////////////`   ");sysctls(2);
+    printf(C2"  ////////////////////////`   ");mem();
     printf(C3" -+++++++++++++++++++++++`    ");envs(2);
     printf(C3" /++++++++++++++++++++++/     ");envs(1);
     printf(C4" /sssssssssssssssssssssss.    ");sysctls(1);
@@ -62,6 +64,30 @@ static void print_apple(void) {
     printf(C5"   `ossssssssssssssssssssss/  ");gpu();
     printf(C6"     :ooooooooooooooooooo+.   \n");
     printf(C6"      `:+oo+/:-..-:/+o+/-     \n");
+}
+static void mem(void)
+{
+    size_t len;
+    mach_port_t myHost;
+    vm_statistics64_data_t	vm_stat;
+    vm_size_t pageSize = 4096; 	/* set to 4k default */
+    unsigned int count = HOST_VM_INFO64_COUNT;
+    kern_return_t ret;
+    myHost = mach_host_self();
+    uint64_t value64;
+    len = sizeof(value64);
+    sysctlbyname(values[2].ctls, &value64, &len, NULL, 0);
+    if(host_page_size(mach_host_self(), &pageSize) == KERN_SUCCESS) {
+        if ((ret = host_statistics64(myHost, HOST_VM_INFO64, (host_info64_t)&
+                                     vm_stat, &count) == KERN_SUCCESS)) {
+            printf(RED"%s    : "NOR"%llu MB of %.f MB\n",
+                   values[2].names,
+                   (uint64_t)(vm_stat.active_count +
+                   vm_stat.inactive_count +
+                   vm_stat.wire_count)*pageSize >> 20,
+                   value64 / 1e+06);
+        }
+    }
 }
 static void gpu(void) // Thank you bottomy(ScrimpyCat) for this.
 {
@@ -220,13 +246,13 @@ static void uptime(time_t *nowp)
             printf("%d min%s", mins, mins > 1 ? "s " : " ");
         else
             printf("%d sec%s", secs, secs > 1 ? "s " : " ");
-        printf("\n");
+        putchar('\n');
     }
 }
 int main(int argc, char **argv) {
     bool print_with_apple = false;
     if(argc >= 2) {
-        char c;
+        int c;
         while((c = getopt(argc, argv, "ha")) != -1) {
             switch(c) {
                 case 'a':
@@ -251,6 +277,7 @@ int main(int argc, char **argv) {
         envs(2);
         envs(3);
         disk();
+        mem();
         pkg();
         uptime(&now);
         gpu();
