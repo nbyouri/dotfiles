@@ -80,7 +80,6 @@ xman*manualFontItalicColor: #6495ed
 
 xfontsel*background: #0D131A
 xfontsel*foreground: #B3354C
-xfontsel*font: -*-gohufontmod-*-*-*-*-*-*-*-*-*-*-*-*
 
 
 
@@ -162,9 +161,11 @@ xfontsel*font: -*-gohufontmod-*-*-*-*-*-*-*-*-*-*-*-*
 !*color7:  #808080
 !! 215 215 215
 !*color15: #d7d7d7
-*font: -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
-*boldFont: -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!*font: -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!*boldFont: -beastie-terminus12-medium-r-normal--12-120-72-72-c-60-iso8859-1
 
+! Colors from hal at
+! http://dotshare.it/dots/634/
 URxvt.colorUL: #ffaf5f
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:      /usr/bin/firefox
@@ -188,3 +189,5 @@ urxvt.color6:       #44B5B1
 urxvt.color14:      #9ED9D8
 urxvt.color7:       #F2F1B9
 urxvt.color15:      #F6F6C9
+urxvt.font:-misc-dash-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
+urxvt.boldFont:-misc-dash-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
