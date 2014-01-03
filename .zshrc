@@ -39,6 +39,11 @@ export TERM=rxvt-256color
 export PATH=/usr/pkg/lib/cw:/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/pkg/bin:/usr/pkg/sbin
 export MANPATH="/usr/pkg/man:$MANPATH"
 
+# Go env
+export GOROOT=~/go
+export GOPATH=~/gopath
+export PATH=$GOROOT/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 # abbreviation for later use
 export EDITOR=vim
 export PAGER=less
@@ -231,7 +236,9 @@ alias pin='sudo pkgin -y in'
 alias pav='pkgin av'
 alias pls='pkgin ls'
 alias sauce='source ~/.zshrc'
-alias spc='spc -c /etc/supercat/spcrc-c'
+alias spc='spc -c /usr/pkg/etc/supercat/spcrc-c'
+alias mipc='sudo bmake install package clean'
+alias mc='sudo bmake clean'
 
 ###
 #
