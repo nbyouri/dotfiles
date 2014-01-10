@@ -239,6 +239,8 @@ alias sauce='source ~/.zshrc'
 alias spc='spc -c /usr/pkg/etc/supercat/spcrc-c'
 alias mipc='sudo bmake install package clean'
 alias mc='sudo bmake clean'
+alias ext='sudo bmake extract'
+alias mdi='sudo bmake mdi'
 
 ###
 #
