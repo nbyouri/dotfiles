@@ -1,0 +1,4 @@
+#!/bin/sh
+
+tty=/dev/$1
+exec /usr/bin/login -f youri <$tty >$tty 2>$tty
