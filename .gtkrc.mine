@@ -1,4 +1,3 @@
-gtk-icon-theme-name="Faenza"
 style "murrinestyle"
 {
 #remove the ugly stipple effect that the pixmap engine causes
