@@ -279,7 +279,7 @@ formats = {
 
     pubmsg_channel = "{pubmsgnick {pubnick %G$[-11]0}$2}$1";
     msg_private_query = "{privmsgnick $[-11]0}$2";
-    new_topic = "       %ctopic %K│  %B'$2' %non %b$1%n%K[set by {nick %y$0}]";
+    new_topic = "       %ctopic %K│  %B'$2' %non %b$1%n%K[set by {channick $1}]";
 
     endofnames = "       names %Y│%m  Total: {hilight $2} ops, {hilight $3} halfops, {hilight $4} voices, {hilight $5} normal%n";
   };
