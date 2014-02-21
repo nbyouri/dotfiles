@@ -1,0 +1,138 @@
+NoGrabServer
+RestartPreviousState
+DecorateTransients
+TitleFont "-*-drift-medium-r-normal-*-*-*-*-*-*-*-*-*"
+ResizeFont "-*-drift-medium-r-normal-*-*-*-*-*-*-*-*-*"
+MenuFont "-*-drift-medium-r-normal-*-*-*-*-*-*-*-*-*"
+IconFont "-*-drift-medium-r-normal-*-*-*-*-*-*-*-*-*"
+IconManagerFont "-*-drift-medium-r-normal-*-*-*-*-*-*-*-*-*"
+#TitleFont "-*-tamsyn-medium-r-normal-*-*-87-*-*-*-*-*-*"
+#ResizeFont "-*-tamsyn-medium-r-normal-*-*-87-*-*-*-*-*-*"
+#MenuFont "-*-tamsyn-medium-r-normal-*-*-87-*-*-*-*-*-*"
+#IconFont "-*-tamsyn-medium-r-normal-*-*-87-*-*-*-*-*-*"
+#IconManagerFont "-*-tamsyn-medium-r-normal-*-*-87-*-*-*-*-*-*"
+ShowIconManager
+SortIconManager
+ForceIcons
+ClientBorderWidth 1
+IconDirectory "/usr/include/X11/bitmaps"
+ 
+ 
+Color
+{
+    BorderColor "#181512"
+    BorderTileForeground "#bea492"
+    BorderTileBackground "#181512"
+    DefaultBackground "#181512"
+    DefaultForeground "#bea492"
+    TitleBackground "#181512"
+    TitleForeground "#9a875f"
+    MenuBackground "#181512"
+    MenuForeground "#9a875f"
+    MenuBorderColor "#504339"
+    MenuTitleBackground "#9a875f"
+    MenuTitleForeground "#181512"
+    IconBackground "#181512"
+    IconForeground "#bea492"
+    IconBorderColor "#504339"
+    IconManagerBackground "#181512"
+    IconManagerForeground "#9a875f"
+}
+ 
+#
+# Define some useful functions for motion-based actions.
+#
+MoveDelta 3
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+ 
+#
+# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
+#
+Button1 = : root : f.menu "System"
+Button3 = : root : f.menu "Applications"
+ 
+Button1 = m : window|icon : f.function "move-or-lower"
+Button2 = m : window|icon : f.iconify
+Button3 = m : window|icon : f.function "move-or-raise"
+ 
+Button1 = : title : f.function "move-or-raise"
+Button2 = : title : f.raiselower
+ 
+Button1 = : icon : f.function "move-or-iconify"
+Button2 = : icon : f.iconify
+ 
+Button1 = : iconmgr : f.iconify
+Button2 = : iconmgr : f.iconify
+ 
+Button1 = mod1 : window : f.move 
+Button3 = mod1 : window : f.resize 
+ 
+NoTitle
+{
+  "TWM Icon Manager"
+  "Conky"
+  "astime"
+}
+ 
+#
+# And a menus with the usual things
+#
+menu "System"
+{
+        "System"                f.title
+        "Window ops"            f.menu "Window Ops"
+        "Windows"               f.menu "TwmWindows"
+        ""                      f.nop
+        "Refresh"               f.refresh
+        "Unfocus"               f.unfocus
+        "Show Icon Box"         f.showiconmgr
+        "Hide Icon Box"         f.hideiconmgr
+        "Version"               f.version
+        ""                      f.nop
+        "Restart"               f.restart
+        "Logout"                f.quit
+}
+ 
+menu "Window Ops"
+{
+        "Window Ops"            f.title
+        "Lower"                 f.lower
+        "Raise"                 f.raise
+        "Resize"                f.resize
+        "Move"                  f.move
+        "Deiconify"             f.deiconify
+        "Iconify"               f.iconify
+        "Identify"              f.identify
+        "Focus"                 f.focus
+        "Kill"                  f.destroy
+}
+ 
+menu "Title Menu"
+{
+        "Lower"                 f.lower
+        "Raise"                 f.raise
+        "Resize"                f.resize
+        "Move"                  f.move
+        "Iconify"               f.iconify
+        "Identify"              f.identify
+        "Focus"                 f.focus
+        "Kill"                  f.destroy
+        "Dismiss"               f.delete
+}
+ 
+ 
+ 
+menu "Applications"
+{
+"Applications"  f.title
+"urxvt"          !"urxvtc &"
+"firefox"    !"firefox &"
+"scrot"         !"scrot&"
+}
+ 
+Icons {
+ "Navigator" "xlogo32"
+ "urxvt" "terminal"
+ }
