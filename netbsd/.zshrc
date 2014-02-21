@@ -39,8 +39,8 @@ function history-all { history -E 1 }
 export TERM=wsvt25
 
 # path
-export PATH=/usr/pkg/lib/cw:/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/pkg/bin:/usr/pkg/sbin
-export MANPATH="/usr/pkg/man:$MANPATH"
+export PATH=/usr/pkg/lib/cw:/sbin/:/usr/X11R7/bin:/Volumes/pkgsrc/pkg/bin:/Volumes/pkgsrc/pkg/sbin:/usr/local/homebrew/bin:~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/libexec:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/pkg/bin:/usr/pkg/sbin
+export MANPATH="/usr/share/man:/usr/pkg/man:$MANPATH"
 
 # Go env
 export GOROOT=~/go
@@ -240,10 +240,10 @@ alias pav='pkgin av'
 alias pls='pkgin ls'
 alias sauce='source ~/.zshrc'
 alias spc='spc -c /etc/supercat/spcrc-c'
-alias mipc='sudo bmake install package clean'
-alias mc='sudo bmake clean'
-alias ext='sudo bmake extract'
-alias mdi='sudo bmake mdi'
+alias mipc='sudo make install package clean'
+alias mc='sudo make clean'
+alias ext='sudo make extract'
+alias mdi='sudo make mdi'
 
 ###
 #
@@ -333,6 +333,6 @@ export LS_COLORS
 
 if [ `/usr/bin/tty` = '/dev/ttyE0' ]; then
 #startx --:7: 2> /dev/null &
-mlterm-fb -e zsh
+#mlterm-fb -e zsh
 fi
 
