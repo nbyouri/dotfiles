@@ -162,7 +162,6 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
-        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
@@ -212,6 +211,22 @@ statusbar = {
       };
       disabled = "yes";
     };
+    awl_0 = {
+      placement = "top";
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_1 = {
+      placement = "top";
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -223,7 +238,18 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "irssi.theme"; timestamps = "no"; };
-  "perl/core/scripts" = { splitlong_max_length = "60"; };
+  "perl/core/scripts" = {
+    splitlong_max_length = "60";
+    awl_viewer = "no";
+    awl_mouse = "no";
+    awl_display_key = "%K$H $C $S";
+    awl_display_key_active = "$H %R$C $S";
+    awl_placement = "top";
+    awl_separator = "\\ ";
+  };
 };
 ignores = (
+  { mask = "Jentuh"; level = "ALL"; },
+  { mask = "bokso"; level = "ALL"; }
 );
+keyboard = ( );
