@@ -221,8 +221,8 @@ abstracts = {
 
   prompt = " %r» %n ";
 
-  sb = "[$*]";
-  sbmode = " %K[%g%g+%n$*%K]";
+  sb = "$*";
+  sbmode = " %K%g%g+%n$*%K";
   sbaway = " %g/* zZzZ */%n";
   sbservertag = ":%g$0%n";
   sbnickmode = "$0";
