@@ -1,15 +1,9 @@
-# -*- shell-script -*-
-
-### Time-stamp: <2010-06-15 11:33:31 MEST>
-
-### CTWM configuration file by Michael Cardell Widerkrantz, mc at
-### hack.org, http://hack.org/mc/
-###
-### Grey and white 2D look that works with or without title bars.
-### Provides keybindings and mouse actions for common tasks like
-### moving, zooming and warping between on screen windows. No keyboard
-### resize, I'm afraid.
-
+#
+#
+# Minimal Keyboard Driven Config by Youri Mouton (youri.mout@gmail.com)
+#
+#
+#
 # Remember the state of client windows if we're started after another
 # window manager.
 RestartPreviousState
