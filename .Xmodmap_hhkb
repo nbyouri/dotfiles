@@ -1,0 +1,6 @@
+clear control
+keycode 37 = BackSpace
+clear mod1
+keycode 116 = Control_L
+add control = Control_L
+
